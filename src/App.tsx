@@ -1,3 +1,5 @@
+import { Button } from "~/components/button";
+
 const LP_GRID_ITEMS = [
   {
     title: "Vite",
@@ -447,19 +449,19 @@ const App = () => (
             smooth and enjoyable development process.
           </p>
 
-          <a
-            href="https://github.com/dsm23/dsm23-next-template"
-            className="mr-3 text-white"
-          >
-            Get started
-          </a>
-
-          <a
-            href="https://vercel.com/new/git/external?repository-url=https://github.com/dsm23/dsm23-next-template/"
-            className="text-white"
-          >
-            Deploy Now
-          </a>
+          <Button asChild>
+            <a
+              href="https://github.com/dsm23/dsm23-vite-spa-template"
+              className="mr-3"
+            >
+              Get started
+            </a>
+          </Button>
+          <Button variant="outline" asChild>
+            <a href="https://vercel.com/new/git/external?repository-url=https://github.com/dsm23/dsm23-vite-spa-template/">
+              Deploy Now
+            </a>
+          </Button>
         </div>
       </div>
     </section>
