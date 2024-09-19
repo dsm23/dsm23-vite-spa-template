@@ -1,0 +1,46 @@
+name: Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    # container:
+    #   image: mcr.microsoft.com/playwright:v1.47.1-jammy
+    steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@v2
+        with:
+          egress-policy: audit
+      - uses: actions/checkout@v4
+      - run: echo "node_version=$(cat .github/nodejs.version)" >> $GITHUB_ENV
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: "use node ${{ env.node_version }}"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "${{ env.node_version }}"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Format check
+        run: pnpm fmt.check
+      - name: Lint check
+        run: pnpm lint
+      # - name: Unit & Integration tests
+      #   run: pnpm test -- --coverage
+      - name: Build
+        run: pnpm build
+      # - name: Smoke & Acceptance tests
+      #   run: |
+      #     pnpm build-storybook --quiet
+      #     pnpm dlx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+      #       "pnpm dlx http-server storybook-static --port 6006 --silent" \
+      #       "pnpm dlx wait-on tcp:127.0.0.1:6006 && pnpm test-storybook"
