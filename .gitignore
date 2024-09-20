@@ -23,6 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 
+# Cache Files
+.eslintmdcache
+.stylelintcache
+.prettiercache
+
 # playwright
 /test-results/
 /playwright-report/
