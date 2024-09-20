@@ -10,21 +10,7 @@ on:
   workflow_dispatch: null
 
 jobs:
-  extract-version:
-    runs-on: ubuntu-latest
-    outputs:
-      playwright-version: ${{ steps.extract-playwright-version.outputs.version }}
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Extract Playwright version
-        id: extract-playwright-version
-        run: |
-          version=$(awk -F'"' '/"@playwright\/test": ".+"/{ gsub(/[^0-9.]/, "", $4); print $4; exit; }' package.json)
-          echo "::set-output name=version::$version"
-
   playwright-tests:
-    needs: extract-version
     timeout-minutes: 60
     runs-on: ubuntu-latest
     strategy:
@@ -33,7 +19,7 @@ jobs:
         shardIndex: [1, 2, 3, 4, 5, 6, 7, 8, 9]
         shardTotal: [9]
     container:
-      image: mcr.microsoft.com/playwright:v${{ needs.extract-version.outputs.playwright-version }}-jammy
+      image: mcr.microsoft.com/playwright:v1.47.1-jammy
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@v2
