@@ -29,14 +29,14 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - run: echo "node_version=$(cat .github/nodejs.version)" >> $GITHUB_ENV
       - uses: pnpm/action-setup@v3
         with:
           version: 9
-      - name: Use Node.js ${{ env.node-version }}
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ env.node-version }}
+          # We want to ensure that the Node.js version running here respects our supported versions
+          node-version-file: ".nvmrc"
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
