@@ -9,6 +9,9 @@ on:
       - main
   workflow_dispatch: null
 
+env:
+  HUSKY: 0
+
 jobs:
   playwright-tests:
     timeout-minutes: 60
