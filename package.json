@@ -1,7 +1,7 @@
 {
   "name": "dsm23-vite-spa-template",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "prepare": "node .husky/install.mjs",
