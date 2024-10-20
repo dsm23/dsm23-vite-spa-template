@@ -9,6 +9,8 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
+import tailwind from "eslint-plugin-tailwindcss";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const gitignorePath = path.resolve(__dirname, ".gitignore");
@@ -21,6 +23,7 @@ export default tseslint.config(
       ...tseslint.configs.strictTypeChecked,
       ...tseslint.configs.stylisticTypeChecked,
       react.configs.flat["jsx-runtime"],
+      ...tailwind.configs["flat/recommended"],
     ],
     files: ["**/*.{js,md,mdx,mjs,ts,tsx}"],
     languageOptions: {
@@ -92,6 +95,7 @@ export default tseslint.config(
     files: ["**/*.mdx"],
     rules: {
       "react/jsx-uses-vars": "error",
+      "tailwindcss/no-custom-classname": "off",
     },
   },
   mdx.flat,
