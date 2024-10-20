@@ -14,9 +14,11 @@ type ThemeProviderState = {
   setTheme: (theme: Theme) => void;
 };
 
+const noop = () => void {};
+
 const initialState: ThemeProviderState = {
   theme: "system",
-  setTheme: () => null,
+  setTheme: noop,
 };
 
 const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
@@ -29,7 +31,7 @@ export function ThemeProvider({
   ...props
 }: ThemeProviderProps) {
   const [theme, setTheme] = useState<Theme>(
-    () => (localStorage.getItem(storageKey) as Theme) || defaultTheme,
+    () => (localStorage.getItem(storageKey) as Theme | null) ?? defaultTheme,
   );
 
   useEffect(() => {
@@ -69,7 +71,7 @@ export function ThemeProvider({
 export const useTheme = () => {
   const context = useContext(ThemeProviderContext);
 
-  if (context === undefined)
+  if (context.setTheme === noop)
     throw new Error("useTheme must be used within a ThemeProvider");
 
   return context;
