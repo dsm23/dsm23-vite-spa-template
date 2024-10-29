@@ -16,7 +16,7 @@ jobs:
   check:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.48.0-jammy
+      image: mcr.microsoft.com/playwright:v1.48.2-jammy
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@v2
