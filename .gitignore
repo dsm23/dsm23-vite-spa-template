@@ -28,6 +28,9 @@ dist-ssr
 .stylelintcache
 .prettiercache
 
+# @nabla/vite-plugin-eslint
+.eslintcache
+
 # playwright
 /test-results/
 /playwright-report/
