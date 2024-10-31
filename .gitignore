@@ -31,6 +31,9 @@ dist-ssr
 # @nabla/vite-plugin-eslint
 .eslintcache
 
+# coverage
+coverage/
+
 # playwright
 /test-results/
 /playwright-report/
