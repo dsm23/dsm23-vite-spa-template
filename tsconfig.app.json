@@ -16,7 +16,8 @@
 
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "/test-utils/*": ["./test-utils"]
     },
 
     /* Linting */
@@ -25,5 +26,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src", "test-utils"]
 }
