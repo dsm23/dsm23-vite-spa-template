@@ -9,7 +9,7 @@
     "build": "tsc -b && vite build",
     "fmt": "prettier . --write --cache --cache-strategy=content --cache-location=.prettiercache",
     "fmt.check": "prettier . --check --cache --cache-strategy=content --cache-location=.prettiercache",
-    "lint:js": "eslint \"**/*.{js,mjs,ts,tsx}\" --report-unused-disable-directives --max-warnings 0",
+    "lint:js": "eslint \"**/*.{js,mjs,ts,tsx}\" --report-unused-disable-directives --max-warnings 0 --cache",
     "lint:md": "eslint \"**/*.md?(x)\" --report-unused-disable-directives --max-warnings 0 --cache --cache-strategy=content --cache-location=.eslintmdcache",
     "lint:css": "stylelint \"**/*.css\" --allow-empty-input --cache --cache-strategy=content --cache-location=.stylelintcache",
     "lint": "run-s lint:md lint:js lint:css",
