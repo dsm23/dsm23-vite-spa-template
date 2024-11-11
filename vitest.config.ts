@@ -16,8 +16,10 @@ export default mergeConfig(
       },
     },
     test: {
+      include: ["src/**/?(*.)+(spec|test).[jt]s?(x)"],
       exclude: [...defaultExclude, "**/playwright-tests/**"],
       coverage: {
+        all: true,
         include: ["src/**/*.[jt]s?(x)"],
         exclude: [
           "src/**/*.stories.[jt]s?(x)",
