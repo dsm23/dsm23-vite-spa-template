@@ -10,7 +10,8 @@ pull_request_rules:
       - check-success=gitleaks
       - check-success~=playwright-tests \(\d, \d\)
       - check-success=snyk
-      - "#check-success>=17"
+      - check-success=zizmor
+      - "#check-success>=18"
     actions:
       review:
         type: APPROVE
@@ -25,7 +26,8 @@ pull_request_rules:
       - check-success=gitleaks
       - check-success~=playwright-tests \(\d, \d\)
       - check-success=snyk
-      - "#check-success>=17"
+      - check-success=zizmor
+      - "#check-success>=18"
     actions:
       review:
         type: APPROVE
@@ -40,7 +42,8 @@ pull_request_rules:
       - check-success=gitleaks
       - check-success~=playwright-tests \(\d, \d\)
       - check-success=snyk
-      - "#check-success>=17"
+      - check-success=zizmor
+      - "#check-success>=18"
       - "#approved-reviews-by>=1"
     actions:
       merge:
