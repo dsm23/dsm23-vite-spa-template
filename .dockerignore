@@ -1,0 +1,9 @@
+dist/
+Dockerfile
+.dockerignore
+kube.tf
+node_modules
+npm-debug.log
+pnpm-debug.log
+README.md
+.git
