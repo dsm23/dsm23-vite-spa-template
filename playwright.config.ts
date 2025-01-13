@@ -1,14 +1,28 @@
+import fs from "node:fs";
+import path from "node:path";
 import { defineConfig, devices } from "@playwright/test";
-
-/**
- * Read environment variables from file.
- * https://github.com/motdotla/dotenv
- */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+import dotenv from "dotenv";
 
 const PORT = process.env.PORT ?? "5173";
+
+const injectFromEnvFile = () => {
+  const envDir = ".";
+  const envFiles = [
+    /** default file */ `.env`,
+    /** local file */ `.env.local`,
+    /** mode file */ `.env.playwright`,
+    /** mode local file */ `.env.playwright.local`,
+  ];
+
+  envFiles.forEach((file) => {
+    const filePath = path.join(envDir, file);
+    if (fs.existsSync(filePath)) {
+      dotenv.config({ path: filePath });
+    }
+  });
+};
+
+injectFromEnvFile();
 
 /**
  * See https://playwright.dev/docs/test-configuration.
