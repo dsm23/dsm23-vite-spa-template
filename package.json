@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "prepare": "node .husky/install.mjs",
+    "change": "changeset",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "fmt": "prettier . --write --cache --cache-strategy=content --cache-location=.prettiercache",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.10.1",
+    "@changesets/cli": "^2.27.11",
     "@chromatic-com/storybook": "^3.2.2",
     "@commitlint/cli": "^19.6.0",
     "@commitlint/config-conventional": "^19.6.0",
