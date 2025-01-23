@@ -15,8 +15,6 @@ env:
 jobs:
   unit-testing:
     runs-on: ubuntu-24.04
-    container:
-      image: mcr.microsoft.com/playwright:v1.49.1-noble
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@v2
