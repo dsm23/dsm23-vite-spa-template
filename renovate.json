@@ -1,16 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
-  "dependencyDashboard": true,
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["major"],
-      "dependencyDashboardApproval": true
-    }
+  "extends": [
+    "config:recommended",
+    "docker:pinDigests",
+    "helpers:pinGitHubActionDigests",
+    ":approveMajorUpdates",
+    ":configMigration",
+    ":enableVulnerabilityAlerts",
+    ":pinAllExceptPeerDependencies"
   ],
-  "vulnerabilityAlerts": {
-    "enabled": true
-  },
   "rebaseWhen": "conflicted",
   "osvVulnerabilityAlerts": true
 }
