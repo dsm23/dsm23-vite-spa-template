@@ -17,19 +17,19 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Harden Runner
-        uses: step-security/harden-runner@v2
+        uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2
         with:
           egress-policy: audit
 
       - name: Git Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           run_install: false
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@1bd1e32a3bdc45362d1e726936510720a7c30a57 # v4
         with:
           path: node_modules/.vite
           # Generate a new cache whenever packages or source files change.
@@ -38,7 +38,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-vite-${{ hashFiles('**/pnpm-lock.yaml') }}-
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4
         with:
           # We want to ensure that the Node.js version running here respects our supported versions
           node-version-file: ".nvmrc"
