@@ -28,7 +28,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN  }}
       - name: Build image and push to registry
-        uses: docker/build-push-action@ca877d9245402d1537745e0e356eab47c3520991 # v6
+        uses: docker/build-push-action@ca877d9245402d1537745e0e356eab47c3520991 # v6.13.0
         with:
           context: .
           file: Dockerfile
