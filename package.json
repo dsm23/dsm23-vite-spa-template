@@ -96,5 +96,5 @@
   "engines": {
     "node": ">=22.0.0"
   },
-  "packageManager": "pnpm@10.2.1"
+  "packageManager": "pnpm@10.2.1+sha224.48adf39a4ab751eda7b73b99447d1f0b6d227e02"
 }
