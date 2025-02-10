@@ -2,16 +2,18 @@
 
 # Stage 1: Base image for dependencies and build
 FROM node:22.13.1-alpine@sha256:e2b39f7b64281324929257d0f8004fb6cb4bf0fdfb9aa8cedb235a766aec31da AS base
+
+# corepack is broken https://github.com/nodejs/corepack/issues/612
+# TODO: remove the following when corepack is fixed
+RUN npm install -g corepack@latest
+
+# Install dependencies only when needed
+FROM base AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 ENV HUSKY=0
-
-# Install dependencies only when needed
-FROM base AS deps
-
-RUN apk add --no-cache libc6-compat
 
 # Copy package manager lock files
 COPY package.json pnpm-lock.yaml ./
@@ -20,6 +22,7 @@ COPY .husky/ ./.husky/
 
 # Install dependencies
 RUN corepack enable pnpm
+RUN corepack up
 RUN pnpm install --frozen-lockfile
 
 # Stage 2: Build stage
@@ -32,6 +35,7 @@ COPY . .
 
 # Build the Vite project
 RUN corepack enable pnpm
+RUN corepack up
 RUN pnpm run build
 
 # Stage 3: Production image
