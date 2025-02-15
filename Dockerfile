@@ -1,7 +1,7 @@
 # syntax=docker.io/docker/dockerfile:1@sha256:93bfd3b68c109427185cd78b4779fc82b484b0b7618e36d0f104d4d801e66d25
 
 # Stage 1: Base image for dependencies and build
-FROM node:22.14.0-alpine@sha256:f96abbefa5558bcf3a309a5da9e1e9bd6dece7704b895c1213ca62f245061d3f AS base
+FROM node:22.14.0-alpine@sha256:15dfca1d0af4f061a902e240d3b0012f4701aafcdf823d99525f2a73a12e6a4d AS base
 
 # corepack is broken https://github.com/nodejs/corepack/issues/612
 # TODO: remove the following when corepack is fixed
