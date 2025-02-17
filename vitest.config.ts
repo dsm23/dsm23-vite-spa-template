@@ -4,17 +4,11 @@ import {
   defineConfig,
   mergeConfig,
 } from "vitest/config";
-import path from "node:path";
 import viteConfig from "./vite.config";
 
 export default mergeConfig(
   viteConfig,
   defineConfig({
-    resolve: {
-      alias: {
-        "~/test-utils": path.resolve(__dirname, "./test-utils"),
-      },
-    },
     test: {
       include: ["src/**/?(*.)+(spec|test).[jt]s?(x)"],
       exclude: [...defaultExclude, "**/playwright-tests/**"],
