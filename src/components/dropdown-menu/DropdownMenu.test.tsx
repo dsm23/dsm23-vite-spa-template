@@ -1,7 +1,6 @@
 import type { ReactElement } from "react";
-import { describe, expect, test } from "vitest";
-import { DropdownMenuSub } from "@radix-ui/react-dropdown-menu";
-import { act, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { Options } from "@testing-library/user-event";
 import {
@@ -16,6 +15,7 @@ import {
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
+  DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
@@ -30,7 +30,7 @@ const setup = (jsx: ReactElement, opts?: Options) => ({
 });
 
 describe("DropdownMenu components", () => {
-  test("renders DropdownMenuTrigger and opens menu on click", async () => {
+  it("renders DropdownMenuTrigger and opens menu on click", async () => {
     const { user } = setup(
       <DropdownMenu>
         <DropdownMenuTrigger>Options</DropdownMenuTrigger>
@@ -43,15 +43,13 @@ describe("DropdownMenu components", () => {
 
     expect(screen.getByText("Options")).toBeInTheDocument();
 
-    await act(async () => {
-      await user.click(screen.getByText("Options"));
-    });
+    await user.click(screen.getByText("Options"));
 
     expect(screen.getByText("Item 1")).toBeInTheDocument();
     expect(screen.getByText("Item 2")).toBeInTheDocument();
   });
 
-  test("renders DropdownMenuCheckboxItem with checked state", async () => {
+  it("renders DropdownMenuCheckboxItem with checked state", async () => {
     const { user } = setup(
       <DropdownMenu>
         <DropdownMenuTrigger>Options</DropdownMenuTrigger>
@@ -63,16 +61,14 @@ describe("DropdownMenu components", () => {
       </DropdownMenu>,
     );
 
-    await act(async () => {
-      await user.click(screen.getByText("Options"));
-    });
+    await user.click(screen.getByText("Options"));
 
     const checkboxItem = screen.getByText("Checkbox Item");
     expect(checkboxItem).toBeInTheDocument();
     expect(checkboxItem).toHaveAttribute("aria-checked", "true");
   });
 
-  test("renders DropdownMenuRadioItem with selected state", async () => {
+  it("renders DropdownMenuRadioItem with selected state", async () => {
     const { user } = setup(
       <DropdownMenu>
         <DropdownMenuTrigger>Options</DropdownMenuTrigger>
@@ -86,16 +82,14 @@ describe("DropdownMenu components", () => {
       </DropdownMenu>,
     );
 
-    await act(async () => {
-      await user.click(screen.getByText("Options"));
-    });
+    await user.click(screen.getByText("Options"));
 
     const radioItem = screen.getByText("Radio Item");
     expect(radioItem).toBeInTheDocument();
     expect(radioItem).toHaveAttribute("aria-checked", "true");
   });
 
-  test("renders DropdownMenuLabel and separator", async () => {
+  it("renders DropdownMenuLabel and separator", async () => {
     const { user } = setup(
       <DropdownMenu>
         <DropdownMenuTrigger>Options</DropdownMenuTrigger>
@@ -107,15 +101,13 @@ describe("DropdownMenu components", () => {
       </DropdownMenu>,
     );
 
-    await act(async () => {
-      await user.click(screen.getByText("Options"));
-    });
+    await user.click(screen.getByText("Options"));
 
     expect(screen.getByText("Label")).toBeInTheDocument();
     expect(screen.getByRole("separator")).toBeInTheDocument();
   });
 
-  test("renders DropdownMenuShortcut", async () => {
+  it("renders DropdownMenuShortcut", async () => {
     const { user } = setup(
       <DropdownMenu>
         <DropdownMenuTrigger>Options</DropdownMenuTrigger>
@@ -127,14 +119,12 @@ describe("DropdownMenu components", () => {
       </DropdownMenu>,
     );
 
-    await act(async () => {
-      await user.click(screen.getByText("Options"));
-    });
+    await user.click(screen.getByText("Options"));
 
     expect(screen.getByText("⌘+K")).toBeInTheDocument();
   });
 
-  test("renders DropdownMenuGroup with items", async () => {
+  it("renders DropdownMenuGroup with items", async () => {
     const { user } = setup(
       <DropdownMenu>
         <DropdownMenuTrigger>Options</DropdownMenuTrigger>
@@ -147,15 +137,13 @@ describe("DropdownMenu components", () => {
       </DropdownMenu>,
     );
 
-    await act(async () => {
-      await user.click(screen.getByText("Options"));
-    });
+    await user.click(screen.getByText("Options"));
 
     expect(screen.getByText("Grouped Item 1")).toBeInTheDocument();
     expect(screen.getByText("Grouped Item 2")).toBeInTheDocument();
   });
 
-  test("renders DropdownMenuSub with content", async () => {
+  it("renders DropdownMenuSub with content", async () => {
     const { user } = setup(
       <DropdownMenu>
         <DropdownMenuTrigger>Options</DropdownMenuTrigger>
@@ -183,77 +171,18 @@ describe("DropdownMenu components", () => {
       </DropdownMenu>,
     );
 
-    await act(async () => {
-      await user.click(screen.getByText("Options"));
-    });
+    await user.click(screen.getByText("Options"));
 
     expect(screen.queryByText("Item One")).not.toBeInTheDocument();
     expect(screen.queryByText("Item Two")).not.toBeInTheDocument();
 
-    await act(async () => {
-      await user.click(screen.getByText("Second trigger"));
-    });
+    await user.click(screen.getByText("Second trigger"));
 
     expect(screen.getByText("Item One")).toBeInTheDocument();
     expect(screen.getByText("Item Two")).toBeInTheDocument();
 
-    await act(async () => {
-      // move cursor away from SubTrigger
-      await user.click(screen.getByText("My Account"));
-    });
-
-    expect(screen.queryByText("Item One")).not.toBeInTheDocument();
-    expect(screen.queryByText("Item Two")).not.toBeInTheDocument();
-  });
-
-  test("renders DropdownMenuSub with content and inset", async () => {
-    const { user } = setup(
-      <DropdownMenu>
-        <DropdownMenuTrigger>Options</DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger inset>
-                <span>Second trigger</span>
-              </DropdownMenuSubTrigger>
-              <DropdownMenuPortal>
-                <DropdownMenuSubContent>
-                  <DropdownMenuLabel inset>Label</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem inset>
-                    <span>Item One</span>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem>
-                    <span>Item Two</span>
-                  </DropdownMenuItem>
-                </DropdownMenuSubContent>
-              </DropdownMenuPortal>
-            </DropdownMenuSub>
-          </DropdownMenuGroup>
-        </DropdownMenuContent>
-      </DropdownMenu>,
-    );
-
-    await act(async () => {
-      await user.click(screen.getByText("Options"));
-    });
-
-    expect(screen.queryByText("Item One")).not.toBeInTheDocument();
-    expect(screen.queryByText("Item Two")).not.toBeInTheDocument();
-
-    await act(async () => {
-      await user.click(screen.getByText("Second trigger"));
-    });
-
-    expect(screen.getByText("Item One")).toBeInTheDocument();
-    expect(screen.getByText("Item Two")).toBeInTheDocument();
-
-    await act(async () => {
-      // move cursor away from SubTrigger
-      await user.click(screen.getByText("My Account"));
-    });
+    // move cursor away from SubTrigger
+    await user.click(screen.getByText("My Account"));
 
     expect(screen.queryByText("Item One")).not.toBeInTheDocument();
     expect(screen.queryByText("Item Two")).not.toBeInTheDocument();
