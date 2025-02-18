@@ -94,8 +94,8 @@ importers:
         specifier: 8.5.6
         version: 8.5.6(storybook@8.5.6(prettier@3.5.1))
       '@storybook/test-runner':
-        specifier: 0.21.1
-        version: 0.21.1(@types/node@22.13.4)(storybook@8.5.6(prettier@3.5.1))
+        specifier: 0.21.2
+        version: 0.21.2(@types/node@22.13.4)(storybook@8.5.6(prettier@3.5.1))
       '@tailwindcss/vite':
         specifier: 4.0.7
         version: 4.0.7(vite@6.1.0(@types/node@22.13.4)(jiti@2.4.2)(lightningcss@1.29.1)(yaml@2.7.0))
@@ -1553,8 +1553,8 @@ packages:
       typescript:
         optional: true
 
-  '@storybook/test-runner@0.21.1':
-    resolution: {integrity: sha512-LoHdJpV3jbxsWgqxsMVVEUDgZM4COGowlGswUCKNtoYVeuHo3msjwCfpALR4C51BntMqMLyjT2ASUIi2Ju+ndw==}
+  '@storybook/test-runner@0.21.2':
+    resolution: {integrity: sha512-Sey5sAU1Z7W62aS1LLYBSOt7H63EHp6piMLFBru6qM0TEtFJI14hiWwOaCkLTg+RkmSqhy9A8uQ8/qwr8qssuA==}
     engines: {node: ^16.10.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -7506,7 +7506,7 @@ snapshots:
       '@storybook/test': 8.5.6(storybook@8.5.6(prettier@3.5.1))
       typescript: 5.7.3
 
-  '@storybook/test-runner@0.21.1(@types/node@22.13.4)(storybook@8.5.6(prettier@3.5.1))':
+  '@storybook/test-runner@0.21.2(@types/node@22.13.4)(storybook@8.5.6(prettier@3.5.1))':
     dependencies:
       '@babel/core': 7.26.0
       '@babel/generator': 7.26.5
