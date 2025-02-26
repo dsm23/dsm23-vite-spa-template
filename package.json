@@ -27,7 +27,7 @@
     "@radix-ui/react-slot": "1.1.2",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
-    "lucide-react": "0.475.0",
+    "lucide-react": "0.476.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "tailwind-merge": "3.0.2",
@@ -89,7 +89,7 @@
     "stylelint-selector-bem-pattern": "4.0.1",
     "tailwindcss": "4.0.9",
     "typescript": "5.7.3",
-    "typescript-eslint": "8.24.1",
+    "typescript-eslint": "8.25.0",
     "vite": "6.2.0",
     "vite-tsconfig-paths": "5.1.4",
     "vitest": "3.0.7"
@@ -97,5 +97,5 @@
   "engines": {
     "node": ">=22.0.0"
   },
-  "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af"
+  "packageManager": "pnpm@10.5.1+sha512.c424c076bd25c1a5b188c37bb1ca56cc1e136fbf530d98bcb3289982a08fd25527b8c9c4ec113be5e3393c39af04521dd647bcf1d0801eaf8ac6a7b14da313af"
 }
