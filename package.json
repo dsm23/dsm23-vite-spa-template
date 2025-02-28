@@ -52,7 +52,7 @@
     "@storybook/react": "8.6.2",
     "@storybook/react-vite": "8.6.2",
     "@storybook/test": "8.6.2",
-    "@storybook/test-runner": "0.21.3",
+    "@storybook/test-runner": "0.22.0",
     "@tailwindcss/vite": "4.0.9",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.2.0",
