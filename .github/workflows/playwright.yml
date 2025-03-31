@@ -62,3 +62,11 @@ jobs:
           name: playwright-report-${{ matrix.shardIndex }}
           path: playwright-report/
           retention-days: 1
+
+  all-playwright-green:
+    runs-on: ubuntu-24.04
+    needs:
+      - playwright-tests
+    steps:
+      - if: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}
+        run: exit 1
