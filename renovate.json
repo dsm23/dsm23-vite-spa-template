@@ -34,8 +34,12 @@
         "playwright",
         "@playwright/test",
         "mcr.microsoft.com/playwright"
-      ],
-      "matchUpdateTypes": ["digest", "patch", "minor", "major"]
+      ]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["nginx", "nginxinc/nginx-unprivileged"],
+      "versioning": "loose"
     }
   ],
   "rebaseWhen": "conflicted",
