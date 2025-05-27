@@ -39,7 +39,7 @@
     {
       "matchDatasources": ["docker"],
       "matchPackageNames": ["nginx", "nginxinc/nginx-unprivileged"],
-      "versioning": "loose"
+      "versioning": "regex:^(?<compatibility>[\\S]*\\d+\\.\\d+(?:\\.\\d+)?(?:[\\S]*)?-alpine)(?<major>\\d+)\\.(?<minor>\\d+)(?:\\.(?<patch>\\d+))?-slim$"
     }
   ],
   "rebaseWhen": "conflicted",
