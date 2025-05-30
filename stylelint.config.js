@@ -9,6 +9,7 @@ const CUSTOM_AT_RULES = [
   "screen",
   "tailwind",
   "theme",
+  "utility",
   "variants",
   // PostCSS-specific at-rules
   "define-mixin",
