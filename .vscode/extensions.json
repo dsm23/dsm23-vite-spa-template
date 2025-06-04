@@ -4,6 +4,7 @@
     "dbaeumer.vscode-eslint",
     "editorconfig.editorconfig",
     "esbenp.prettier-vscode",
+    "jasonnutter.vscode-codeowners",
     "joshbolduc.commitlint",
     "ms-azuretools.vscode-containers",
     "ms-playwright.playwright",
