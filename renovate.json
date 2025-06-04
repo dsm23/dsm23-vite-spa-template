@@ -35,11 +35,6 @@
         "@playwright/test",
         "mcr.microsoft.com/playwright"
       ]
-    },
-    {
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["nginx", "nginxinc/nginx-unprivileged"],
-      "versioning": "regex:^(?<compatibility>[\\S]*\\d+\\.\\d+(?:\\.\\d+)?(?:[\\S]*)?-alpine)(?<major>\\d+)\\.(?<minor>\\d+)(?:\\.(?<patch>\\d+))?-slim$"
     }
   ],
   "rebaseWhen": "conflicted",
