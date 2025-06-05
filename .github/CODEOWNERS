@@ -6,10 +6,3 @@
 
 # These are the default owners for the whole content of this repository. The default owners are automatically added as reviewers when you open a pull request, unless different owners are specified in the file.
 * @dsm23
-
-.github/actions/ @dsm23 @renovate[bot]
-.github/workflows/ @dsm23 @renovate[bot]
-.nvmrc @dsm23 @renovate[bot]
-Dockerfile @dsm23 @renovate[bot]
-package.json @dsm23 @renovate[bot]
-pnpm-lock.yaml @dsm23 @renovate[bot]
