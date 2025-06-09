@@ -8,9 +8,6 @@ import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
-// TODO: bring back tailwind eslint plugin after it's been updated
-// import tailwind from "eslint-plugin-tailwindcss";
-
 const gitignorePath = path.resolve(import.meta.dirname, ".gitignore");
 
 export default tseslint.config(
@@ -21,7 +18,6 @@ export default tseslint.config(
       ...tseslint.configs.strictTypeChecked,
       ...tseslint.configs.stylisticTypeChecked,
       react.configs.flat["jsx-runtime"],
-      // ...tailwind.configs["flat/recommended"],
     ],
     files: ["**/*.{js,md,mdx,mjs,ts,tsx}"],
     languageOptions: {
