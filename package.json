@@ -4,7 +4,6 @@
   "version": "1.1.0",
   "type": "module",
   "scripts": {
-    "prepare": "node .husky/install.mjs",
     "change": "changeset",
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -70,9 +69,8 @@
     "eslint-plugin-storybook": "9.0.6",
     "eslint-plugin-tailwindcss": "3.18.0",
     "globals": "16.2.0",
-    "husky": "9.1.7",
     "jsdom": "26.1.0",
-    "lint-staged": "16.1.0",
+    "lefthook": "1.11.13",
     "npm-run-all2": "8.0.4",
     "prettier": "3.5.3",
     "prettier-plugin-css-order": "2.1.2",
