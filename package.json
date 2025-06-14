@@ -62,7 +62,7 @@
     "cz-conventional-changelog": "3.3.0",
     "dotenv": "16.5.0",
     "eslint": "9.29.0",
-    "eslint-plugin-mdx": "3.4.2",
+    "eslint-plugin-mdx": "3.5.0",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "5.2.0",
     "eslint-plugin-react-refresh": "0.4.20",
