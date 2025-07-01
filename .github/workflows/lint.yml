@@ -34,3 +34,6 @@ jobs:
 
       - name: Lint
         run: pnpm lint
+
+      - name: Lint (biome)
+        run: pnpm lint:biome

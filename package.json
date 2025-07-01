@@ -12,6 +12,7 @@
     "lint:js": "eslint \"**/*.{js,mjs,ts,tsx}\" --report-unused-disable-directives --max-warnings 0 --cache",
     "lint:md": "eslint \"**/*.md?(x)\" --report-unused-disable-directives --max-warnings 0 --cache --cache-strategy=content --cache-location=.eslintmdcache",
     "lint:css": "stylelint \"**/*.css\" --allow-empty-input --cache --cache-strategy=content --cache-location=.stylelintcache",
+    "lint:biome": "biome lint .",
     "lint": "run-p lint:md lint:js lint:css",
     "preview": "vite preview",
     "playwright": "playwright",
@@ -32,6 +33,7 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.2",
+    "@biomejs/biome": "2.0.6",
     "@changesets/cli": "2.29.5",
     "@chromatic-com/storybook": "4.0.1",
     "@commitlint/cli": "19.8.1",
