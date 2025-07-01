@@ -43,6 +43,3 @@ coverage/
 # storybook
 *storybook.log
 storybook-static/
-
-# typescript
-*.tsbuildinfo
