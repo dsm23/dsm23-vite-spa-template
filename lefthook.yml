@@ -3,17 +3,6 @@ pre-commit:
   commands:
     prettier:
       run: ./node_modules/.bin/prettier --check {staged_files}
-      glob:
-        - "*.css"
-        - "*.ts"
-        - "*.js"
-        - "*.tsx"
-        - "*.jsx"
-        - "*.md"
-        - "*.mdx"
-        - "*.json"
-        - "*.yml"
-        - "*.yaml"
 
     stylelint:
       run: ./node_modules/.bin/stylelint --allow-empty-input {staged_files}
@@ -21,13 +10,6 @@ pre-commit:
 
     eslint:
       run: ./node_modules/.bin/eslint {staged_files}
-      glob:
-        - "*.ts"
-        - "*.js"
-        - "*.tsx"
-        - "*.jsx"
-        - "*.md"
-        - "*.mdx"
 
     biome:
       run: ./node_modules/.bin/biome lint {staged_files}
