@@ -29,6 +29,9 @@ pre-commit:
         - "*.md"
         - "*.mdx"
 
+    biome:
+      run: ./node_modules/.bin/biome lint {staged_files}
+
 prepare-commit-msg:
   commands:
     commitzen:
