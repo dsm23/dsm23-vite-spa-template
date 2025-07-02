@@ -2,7 +2,7 @@ pre-commit:
   parallel: true
   commands:
     prettier:
-      run: ./node_modules/.bin/prettier --check {staged_files}
+      run: ./node_modules/.bin/prettier --check --ignore-unknown {staged_files}
 
     stylelint:
       run: ./node_modules/.bin/stylelint --allow-empty-input {staged_files}
@@ -19,14 +19,7 @@ pre-commit:
         - "*.mdx"
 
     biome:
-      run: ./node_modules/.bin/biome lint {staged_files}
-      glob:
-        - "*.css"
-        - "*.ts"
-        - "*.js"
-        - "*.tsx"
-        - "*.jsx"
-        - "*.json"
+      run: ./node_modules/.bin/biome lint --no-errors-on-unmatched {staged_files}
 
 prepare-commit-msg:
   commands:
