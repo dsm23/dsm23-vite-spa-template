@@ -23,6 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# lefthook
+lefthook-local.yml
+
 # Cache Files
 .eslintmdcache
 .stylelintcache
