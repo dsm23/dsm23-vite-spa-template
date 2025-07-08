@@ -15,7 +15,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "managerFilePatterns": ["prettier.config.js"],
+      "managerFilePatterns": ["/(^|/)prettier.config.js$/"],
       "matchStrings": [
         "\\/\\/ renovate: datasource=(?<datasource>[a-zA-Z0-9-._]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+importOrderTypeScriptVersion\\s*:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s"
       ]
@@ -39,11 +39,13 @@
       "groupName": "stylelint packages"
     },
     {
-      "extends": ["group:playwrightMonorepo"],
+      "extends": ["monorepo:playwright"],
+      "groupName": "playwright monorepo",
       "matchPackageNames": ["mcr.microsoft.com/playwright"]
     },
     {
-      "extends": ["group:storybookMonorepo"],
+      "extends": ["monorepo:storybook"],
+      "groupName": "storybook monorepo",
       "matchPackageNames": ["eslint-plugin-storybook"]
     }
   ],
