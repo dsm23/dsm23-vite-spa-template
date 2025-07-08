@@ -39,12 +39,12 @@
       "groupName": "stylelint packages"
     },
     {
-      "groupName": "playwright monorepo",
-      "matchPackageNames": [
-        "playwright",
-        "@playwright/test",
-        "mcr.microsoft.com/playwright"
-      ]
+      "extends": ["group:playwrightMonorepo"],
+      "matchPackageNames": ["mcr.microsoft.com/playwright"]
+    },
+    {
+      "extends": ["group:storybookMonorepo"],
+      "matchPackageNames": ["eslint-plugin-storybook"]
     }
   ],
   "rebaseWhen": "conflicted",
