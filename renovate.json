@@ -19,7 +19,7 @@
       "depNameTemplate": "typescript",
       "datasourceTemplate": "npm",
       "matchStrings": [
-        "\\/\\/ renovate: datasource=(?<datasource>[a-zA-Z0-9-._]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+importOrderTypeScriptVersion\\s*:\\s*[\"']?(?<currentValue>.+?)[\"']?\\s"
+        "\\/\\/ renovate: datasource=(?<datasource>[a-zA-Z0-9-._]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+importOrderTypeScriptVersion\\s*\\:\\s*[\"']?(?<currentValue>.+?)[\"']"
       ]
     }
   ],
