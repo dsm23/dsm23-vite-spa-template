@@ -15,6 +15,7 @@
     "lint:biome": "biome lint .",
     "lint": "run-p lint:md lint:js lint:css",
     "preview": "vite preview",
+    "check-types": "tsc --noEmit",
     "playwright": "playwright",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
