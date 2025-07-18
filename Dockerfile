@@ -11,7 +11,7 @@ FROM node:24.4.1-alpine@sha256:820e86612c21d0636580206d802a726f2595366e1b867e564
 # Install dependencies only when needed
 FROM base AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
+RUN apk add --no-cache gcompat=1.1.0-r4
 WORKDIR /app
 
 ENV LEFTHOOK=0
@@ -20,8 +20,8 @@ ENV LEFTHOOK=0
 COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies
-RUN corepack enable pnpm
-RUN pnpm install --frozen-lockfile
+RUN corepack enable pnpm \
+  && pnpm install --frozen-lockfile
 
 # Stage 2: Build stage
 FROM base AS builder
@@ -32,8 +32,8 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Build the Vite project
-RUN corepack enable pnpm
-RUN pnpm run build
+RUN corepack enable pnpm \
+  && pnpm run build
 
 # Stage 3: Production image
 FROM nginx:1.29.0-alpine-slim@sha256:64daa9307345a975d3952f4252827ed4be7f03ea675ad7bb5821f75ad3d43095 AS runner
@@ -44,12 +44,12 @@ COPY --from=builder /app/nginx/nginx.conf /etc/nginx/templates/default.conf.temp
 
 # implement changes required to run NGINX as an unprivileged user
 RUN sed -i '/user  nginx;/d' /etc/nginx/nginx.conf \
-    && sed -i 's,\(/var\)\{0\,1\}/run/nginx.pid,/tmp/nginx.pid,' /etc/nginx/nginx.conf \
-# nginx user must own the cache and etc directory to write cache and tweak the nginx config
-    && chown -R nginx /var/cache/nginx \
-    && chmod -R g+w /var/cache/nginx \
-    && chown -R nginx /etc/nginx \
-    && chmod -R g+w /etc/nginx
+  && sed -i 's,\(/var\)\{0\,1\}/run/nginx.pid,/tmp/nginx.pid,' /etc/nginx/nginx.conf \
+  # nginx user must own the cache and etc directory to write cache and tweak the nginx config
+  && chown -R nginx /var/cache/nginx \
+  && chmod -R g+w /var/cache/nginx \
+  && chown -R nginx /etc/nginx \
+  && chmod -R g+w /etc/nginx
 
 USER nginx
 
