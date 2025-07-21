@@ -12,6 +12,7 @@ pull_request_rules:
       - check-success=format
       - check-success=gitleaks
       - check-success=lint
+      - check-success=osv-scan-pr
       - check-success=playwright-tests
       - check-success=pr-title
       - check-success=renovate
@@ -35,6 +36,7 @@ pull_request_rules:
       - check-success=format
       - check-success=gitleaks
       - check-success=lint
+      - check-success=osv-scan-pr
       - check-success=playwright-tests
       - check-success=pr-title
       - check-success=renovate
@@ -58,6 +60,7 @@ pull_request_rules:
       - check-success=format
       - check-success=gitleaks
       - check-success=lint
+      - check-success=osv-scan-pr
       - check-success=playwright-tests
       - check-success=pr-title
       - check-success=renovate
