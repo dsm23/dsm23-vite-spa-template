@@ -70,8 +70,8 @@ importers:
         specifier: 4.5.1
         version: 4.5.1(prettier@3.6.2)
       '@nabla/vite-plugin-eslint':
-        specifier: 2.0.5
-        version: 2.0.5(eslint@9.31.0(jiti@2.4.2))(vite@7.0.6(@types/node@24.1.0)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))
+        specifier: 2.0.6
+        version: 2.0.6(eslint@9.31.0(jiti@2.4.2))(vite@7.0.6(@types/node@24.1.0)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))
       '@playwright/test':
         specifier: 1.54.1
         version: 1.54.1
@@ -853,11 +853,11 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
 
-  '@nabla/vite-plugin-eslint@2.0.5':
-    resolution: {integrity: sha512-m6Q8ZVM0ASZfYyfFbG661mDklhZQZEeBMQgtB26NhdadxPSctHzHsUbF87msdSb0V4Z8R1p/vRkB5SHNOpANAQ==}
+  '@nabla/vite-plugin-eslint@2.0.6':
+    resolution: {integrity: sha512-QQZwq7aTx2WtG2/c2ASF+amNAytbLY8LYYc71bECIMzRr7Y7Cx3o6oAQrcb1qQbq2+z2S2rq7i7o5LTskQi8sA==}
     peerDependencies:
       eslint: ^8.45 || ^9
-      vite: ^4 || ^5 || ^6
+      vite: ^4 || ^5 || ^6 || ^7
 
   '@neoconfetti/react@1.0.0':
     resolution: {integrity: sha512-klcSooChXXOzIm+SE5IISIAn3bYzYfPjbX7D7HoqZL84oAfgREeSg5vSIaSFH+DaGzzvImTyWe1OyrJ67vik4A==}
@@ -1613,9 +1613,6 @@ packages:
 
   '@types/estree-jsx@1.0.5':
     resolution: {integrity: sha512-52CcUVNFyfb1A2ALocQw/Dd1BQFNmSdkuC3BkZ6iqhdMfQz7JWOFRuJFloOzjk+6WijU56m9oKXFAXc7o3Towg==}
-
-  '@types/estree@1.0.6':
-    resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==}
 
   '@types/estree@1.0.7':
     resolution: {integrity: sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==}
@@ -5728,11 +5725,11 @@ snapshots:
       '@types/react': 19.1.8
       react: 19.1.0
 
-  '@nabla/vite-plugin-eslint@2.0.5(eslint@9.31.0(jiti@2.4.2))(vite@7.0.6(@types/node@24.1.0)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))':
+  '@nabla/vite-plugin-eslint@2.0.6(eslint@9.31.0(jiti@2.4.2))(vite@7.0.6(@types/node@24.1.0)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0))':
     dependencies:
       '@types/eslint': 9.6.1
       chalk: 4.1.2
-      debug: 4.4.0
+      debug: 4.4.1
       eslint: 9.31.0(jiti@2.4.2)
       vite: 7.0.6(@types/node@24.1.0)(jiti@2.4.2)(lightningcss@1.30.1)(yaml@2.8.0)
     transitivePeerDependencies:
@@ -6428,14 +6425,12 @@ snapshots:
 
   '@types/eslint@9.6.1':
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.7
       '@types/json-schema': 7.0.15
 
   '@types/estree-jsx@1.0.5':
     dependencies:
       '@types/estree': 1.0.7
-
-  '@types/estree@1.0.6': {}
 
   '@types/estree@1.0.7': {}
 
