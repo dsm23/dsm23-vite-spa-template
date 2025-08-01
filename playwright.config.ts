@@ -3,8 +3,6 @@ import path from "node:path";
 import { defineConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
 
-const PORT = process.env.PORT ?? "5173";
-
 const injectFromEnvFile = () => {
   const envDir = ".";
   const envFiles = [
@@ -35,32 +33,50 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   reporter: "html",
   use: {
-    baseURL: `http://localhost:${PORT}`,
     trace: "on-first-retry",
   },
-
-  /* Configure projects for major browsers */
   projects: [
     {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
+      name: "chromium-dev",
+      use: { ...devices["Desktop Chrome"], baseURL: "http://localhost:5173" },
     },
 
     {
-      name: "firefox",
-      use: { ...devices["Desktop Firefox"] },
+      name: "firefox-dev",
+      use: { ...devices["Desktop Firefox"], baseURL: "http://localhost:5173" },
     },
 
     {
-      name: "webkit",
-      use: { ...devices["Desktop Safari"] },
+      name: "webkit-dev",
+      use: { ...devices["Desktop Safari"], baseURL: "http://localhost:5173" },
+    },
+
+    {
+      name: "chromium-prod",
+      use: { ...devices["Desktop Chrome"], baseURL: "http://localhost:4173" },
+    },
+
+    {
+      name: "firefox-prod",
+      use: { ...devices["Desktop Firefox"], baseURL: "http://localhost:4173" },
+    },
+
+    {
+      name: "webkit-prod",
+      use: { ...devices["Desktop Safari"], baseURL: "http://localhost:4173" },
     },
   ],
 
-  /* Run your local dev server before starting the tests */
-  webServer: {
-    command: "pnpm run dev",
-    url: `http://localhost:${PORT}`,
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: [
+    {
+      command: "pnpm run build && pnpm run preview",
+      url: `http://localhost:4173`,
+      reuseExistingServer: !process.env.CI,
+    },
+    {
+      command: "pnpm run dev",
+      url: `http://localhost:5173`,
+      reuseExistingServer: !process.env.CI,
+    },
+  ],
 });
