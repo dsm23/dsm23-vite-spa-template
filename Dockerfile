@@ -10,7 +10,7 @@ FROM node:24.4.1-alpine@sha256:820e86612c21d0636580206d802a726f2595366e1b867e564
 
 # Install dependencies only when needed
 FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why gcompat might be needed.
 RUN apk add --no-cache gcompat=1.1.0-r4
 WORKDIR /app
 
