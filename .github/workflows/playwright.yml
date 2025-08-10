@@ -22,10 +22,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shardIndex: [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        shardTotal: [9]
+        shardIndex:
+          [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+        shardTotal: [18]
     container:
       image: mcr.microsoft.com/playwright:v1.54.2@sha256:18b4bcff4f8ba0ac8c44b09f09def6a4f6cb8579e5f26381c21f38b50935d5d8
+      options: --user 1001
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
@@ -42,9 +44,6 @@ jobs:
 
       - name: Run Playwright tests
         run: pnpm playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
-        env:
-          # Required for firefox
-          HOME: /root
 
       - name: Upload playwright report to GitHub Actions Artifacts
         if: ${{ !cancelled() }}
