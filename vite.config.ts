@@ -9,9 +9,10 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    eslint({
-      formatter: "stylish",
-    }),
+    !!process.env.CI &&
+      eslint({
+        formatter: "stylish",
+      }),
     tsconfigPaths(),
   ],
 });

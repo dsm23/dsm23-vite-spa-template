@@ -35,6 +35,7 @@ lefthook-local.yml
 .eslintcache
 
 # coverage
+.vitest-reports/
 coverage/
 
 # playwright
