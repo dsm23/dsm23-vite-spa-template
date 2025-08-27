@@ -41,8 +41,13 @@ jobs:
         run: >
           pnpm exec vitest run
           --project unit
-          --reporter=blob
+          --reporter blob
           --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+          --coverage.enabled
+          --coverage.thresholds.branches 0
+          --coverage.thresholds.functions 0
+          --coverage.thresholds.lines 0
+          --coverage.thresholds.statements 0
 
       - name: Upload blob report to GitHub Actions Artifacts
         if: ${{ !cancelled() }}
