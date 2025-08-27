@@ -1,3 +1,9 @@
 onlyBuiltDependencies:
   - lefthook
+
+packages:
+  - "**"
+
+savePrefix: ""
+
 sideEffectsCache: false
