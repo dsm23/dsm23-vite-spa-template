@@ -44,6 +44,9 @@ jobs:
           --reporter blob
           --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
           --coverage.enabled
+          --coverage.reporter=json
+          --coverage.reporter=json-summary
+          --coverage.reporter=text
           --coverage.thresholds.branches 0
           --coverage.thresholds.functions 0
           --coverage.thresholds.lines 0
@@ -62,6 +65,8 @@ jobs:
     runs-on: ubuntu-24.04
     needs:
       - unit-testing-shard
+    permissions:
+      pull-requests: write
     steps:
       - if: ${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}
         run: exit 1
@@ -87,6 +92,15 @@ jobs:
           merge-multiple: true
 
       - name: Merge reports
-        run: pnpm exec vitest --coverage --merge-reports
+        run: >
+          pnpm exec vitest
+          --coverage.enabled
+          --coverage.reporter=json
+          --coverage.reporter=json-summary
+          --coverage.reporter=text
+          --merge-reports
         env:
           FORCE_COLOR: 1
+
+      - name: Coverage in GitHub PR comment
+        uses: davelosert/vitest-coverage-report-action@8ab049ff5a2c6e78f78af446329379b318544a1a # v2.8.3
