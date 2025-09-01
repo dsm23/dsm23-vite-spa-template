@@ -5,6 +5,7 @@ node_modules/
 target/
 compiled/
 coverage/
+infra/
 
 lerna.json
 test-timings.json
