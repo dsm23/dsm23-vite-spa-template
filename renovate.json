@@ -23,6 +23,7 @@
       ]
     }
   ],
+  "ignorePresets": ["workarounds:nodeDockerVersioning"],
   "packageRules": [
     {
       "extends": ["packages:eslint"],
@@ -55,6 +56,13 @@
         "eslint-plugin-storybook",
         "storybook"
       ]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchDepNames": ["node"],
+      "matchManagers": ["dockerfile"],
+      "versionCompatibility": "^(?<version>[^-]+)(?<compatibility>-.*)?$",
+      "versioning": "node"
     }
   ],
   "rebaseWhen": "conflicted",
