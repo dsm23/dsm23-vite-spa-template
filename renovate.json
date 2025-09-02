@@ -64,6 +64,13 @@
       "matchManagers": ["dockerfile"],
       "versionCompatibility": "^(?<version>[^-]+)(?<compatibility>-.*)?$",
       "versioning": "node"
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchDepNames": ["node"],
+      "matchManagers": ["dockerfile"],
+      "versionCompatibility": "^(?<version>[^-]+)(?<compatibility>-.*)?$",
+      "versioning": "node"
     }
   ],
   "rebaseWhen": "conflicted",
