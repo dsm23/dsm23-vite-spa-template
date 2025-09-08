@@ -4,9 +4,56 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant sm (@media (width >= theme(--breakpoint-sm)));
+@custom-variant md (@media (width >= theme(--breakpoint-md)));
+@custom-variant lg (@media (width >= theme(--breakpoint-lg)));
+@custom-variant xl (@media (width >= theme(--breakpoint-xl)));
+@custom-variant 2xl (@media (width >= theme(--breakpoint-2xl)));
 
-@utility container {
-  margin-inline: auto;
+@theme {
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+  --breakpoint-2xl: 86rem;
+}
+
+@layer utilities {
+  .container {
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  @variant sm {
+    .container {
+      max-width: var(--breakpoint-sm);
+    }
+  }
+
+  @variant md {
+    .container {
+      max-width: var(--breakpoint-md);
+      padding-inline: 2rem;
+    }
+  }
+
+  @variant lg {
+    .container {
+      max-width: var(--breakpoint-lg);
+    }
+  }
+
+  @variant xl {
+    .container {
+      max-width: var(--breakpoint-xl);
+    }
+  }
+
+  @variant 2xl {
+    .container {
+      max-width: var(--breakpoint-2xl);
+    }
+  }
 }
 
 :root {
