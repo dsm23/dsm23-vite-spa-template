@@ -11,6 +11,7 @@ pull_request_rules:
       - check-success=dependency-review
       - check-success=format
       - check-success=gitleaks
+      - check-success=helm
       - check-success=lint
       - check-success=playwright-tests
       - check-success=pr-title
@@ -34,6 +35,7 @@ pull_request_rules:
       - check-success=dependency-review
       - check-success=format
       - check-success=gitleaks
+      - check-success=helm
       - check-success=lint
       - check-success=playwright-tests
       - check-success=pr-title
@@ -57,6 +59,7 @@ pull_request_rules:
       - check-success=dependency-review
       - check-success=format
       - check-success=gitleaks
+      - check-success=helm
       - check-success=lint
       - check-success=playwright-tests
       - check-success=pr-title
