@@ -5,7 +5,7 @@ node_modules/
 target/
 compiled/
 coverage/
-infra/
+infra/templates/**/*.yaml
 
 lerna.json
 test-timings.json
