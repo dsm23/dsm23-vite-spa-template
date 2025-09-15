@@ -30,6 +30,14 @@
       "matchStrings": [
         "# renovate: datasource=(?<datasource>[a-zA-Z0-9-._]+?) depName=(?<depName>[^\\s]+?)(?: (?:lookupName|packageName)=(?<packageName>[^\\s]+?))?(?: versioning=(?<versioning>[^\\s]+?))?(?: extractVersion=(?<extractVersion>[^\\s]+?))?\\s+uses\\:\\s*dawidd6\\/action-download-artifact@.*\\s*#\\s*(?<currentValue>.+?)\\s+"
       ]
+    },
+    {
+      "customType": "regex",
+      "description": "Manage Alpine OS versions in container image tags",
+      "managerFilePatterns": ["/Dockerfile/"],
+      "matchStrings": ["FROM\\s+(?<depName>[\\S]+):(?<currentValue>[\\S]+)@.*"],
+      "versioningTemplate": "regex:^(?<compatibility>[\\S]*\\d+\\.\\d+(?:\\.\\d+)?(?:[\\S]*)?-alpine-?)(?<major>\\d+)\\.(?<minor>\\d+)(?:\\.(?<patch>\\d+))?$",
+      "datasourceTemplate": "docker"
     }
   ],
   "ignoreDeps": ["ghcr.io/dsm23/dsm23-vite-spa-template"],
@@ -66,13 +74,6 @@
         "eslint-plugin-storybook",
         "storybook"
       ]
-    },
-    {
-      "matchDatasources": ["docker"],
-      "matchDepNames": ["node"],
-      "matchManagers": ["dockerfile"],
-      "versionCompatibility": "^(?<version>[^-]+)(?<compatibility>-.*)?$",
-      "versioning": "node"
     },
     {
       "matchDatasources": ["docker"],
