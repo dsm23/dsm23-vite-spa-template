@@ -36,7 +36,7 @@ RUN corepack enable pnpm \
   && pnpm run build
 
 # Stage 3: Production image
-FROM nginx:1.29.2-alpine-slim@sha256:389b9c9e8d6552c702f2c49cbcbf481a48be73621e7b63568c72969bde595eef AS runner
+FROM nginx:1.29.2-alpine-slim@sha256:d5cd890c485eab8e763a5f03d34b0f2154480338c94f9974dba5af507d116c9c AS runner
 
 # Copy built static files to nginx's default public folder
 COPY --from=builder /app/dist /usr/share/nginx/html
