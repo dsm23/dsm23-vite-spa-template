@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Laptop, Moon, Sun } from "lucide-react";
 import { Button } from "~/components/button";
 import {
@@ -12,19 +11,7 @@ import { useTheme } from "~/components/theme-provider";
 import type { Theme } from "~/components/theme-provider";
 
 const ThemeSwitcher = () => {
-  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
-
-  // useEffect only runs on the client, so now we can safely show the UI
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
-
-  const ICON_SIZE = 16;
 
   return (
     <DropdownMenu>
@@ -32,23 +19,11 @@ const ThemeSwitcher = () => {
         <Button variant="ghost" size="sm">
           <span className="sr-only">Theme switcher</span>
           {theme === "light" ? (
-            <Sun
-              key="light"
-              size={ICON_SIZE}
-              className="text-muted-foreground"
-            />
+            <Sun key="light" className="text-muted-foreground size-4" />
           ) : theme === "dark" ? (
-            <Moon
-              key="dark"
-              size={ICON_SIZE}
-              className="text-muted-foreground"
-            />
+            <Moon key="dark" className="text-muted-foreground size-4" />
           ) : (
-            <Laptop
-              key="system"
-              size={ICON_SIZE}
-              className="text-muted-foreground"
-            />
+            <Laptop key="system" className="text-muted-foreground size-4" />
           )}
         </Button>
       </DropdownMenuTrigger>
@@ -58,15 +33,13 @@ const ThemeSwitcher = () => {
           onValueChange={(e) => setTheme(e as Theme)}
         >
           <DropdownMenuRadioItem className="flex gap-2" value="light">
-            <Sun size={ICON_SIZE} className="text-muted-foreground" />{" "}
-            <span>Light</span>
+            <Sun className="text-muted-foreground size-4" /> <span>Light</span>
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem className="flex gap-2" value="dark">
-            <Moon size={ICON_SIZE} className="text-muted-foreground" />{" "}
-            <span>Dark</span>
+            <Moon className="text-muted-foreground size-4" /> <span>Dark</span>
           </DropdownMenuRadioItem>
           <DropdownMenuRadioItem className="flex gap-2" value="system">
-            <Laptop size={ICON_SIZE} className="text-muted-foreground" />{" "}
+            <Laptop className="text-muted-foreground size-4" />{" "}
             <span>System</span>
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
