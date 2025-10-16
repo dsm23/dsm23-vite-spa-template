@@ -1,4 +1,4 @@
-name: Build
+name: Build check
 
 on:
   push:
@@ -32,5 +32,8 @@ jobs:
       - name: Node setup
         uses: ./.github/actions/setup
 
-      - name: Build
-        run: pnpm build
+      - name: Build check
+        run: pnpm run build
+
+      - name: Storybook build check
+        run: pnpm run build-storybook
