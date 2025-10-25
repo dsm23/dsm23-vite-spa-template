@@ -1,3 +1,4 @@
+import { playwright } from "@vitest/browser-playwright";
 import {
   coverageConfigDefaults,
   defaultExclude,
@@ -13,7 +14,6 @@ export default mergeConfig(
   defineConfig({
     test: {
       coverage: {
-        all: true,
         include: ["src/**/*.[jt]s?(x)"],
         exclude: [
           "src/**/*.stories.[jt]s?(x)",
@@ -58,7 +58,7 @@ export default mergeConfig(
             browser: {
               enabled: true,
               headless: true,
-              provider: "playwright",
+              provider: playwright(),
               instances: [{ browser: "chromium" }],
             },
             setupFiles: [".storybook/vitest.setup.ts"],
