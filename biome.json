@@ -19,10 +19,15 @@
       "a11y": {
         "noSvgWithoutTitle": "off",
         "useButtonType": "off"
-      },
-      "suspicious": {
-        "noUnknownAtRules": "off"
       }
+    }
+  },
+  "css": {
+    "linter": {
+      "enabled": false
+    },
+    "parser": {
+      "tailwindDirectives": true
     }
   },
   "javascript": {
