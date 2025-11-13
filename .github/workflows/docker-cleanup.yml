@@ -9,7 +9,7 @@ permissions:
   packages: read
 
 jobs:
-  format:
+  cleanup:
     runs-on: ubuntu-24.04
     permissions:
       packages: write
