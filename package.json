@@ -60,7 +60,6 @@
     "@vitejs/plugin-react": "5.1.0",
     "@vitest/browser-playwright": "4.0.8",
     "@vitest/coverage-v8": "4.0.8",
-    "autoprefixer": "10.4.21",
     "dotenv": "17.2.3",
     "eslint": "9.39.1",
     "eslint-plugin-mdx": "3.6.2",
