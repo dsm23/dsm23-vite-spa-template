@@ -55,7 +55,8 @@
         "playwright",
         "@playwright/test",
         "mcr.microsoft.com/playwright"
-      ]
+      ],
+      "minimumReleaseAge": "3 days"
     },
     {
       "groupName": "storybook monorepo",
