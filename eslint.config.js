@@ -1,19 +1,12 @@
 import js from "@eslint/js";
 import * as mdx from "eslint-plugin-mdx";
 import react from "eslint-plugin-react";
+import reactDom from "eslint-plugin-react-dom";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
-
-/**
- *  @type {import("eslint").Linter.LanguageOptions}
- */
-const languageOptions = {
-  ecmaVersion: 2020,
-  globals: globals.browser,
-};
 
 export default defineConfig([
   globalIgnores([
@@ -23,17 +16,32 @@ export default defineConfig([
     "storybook-static/",
     "test-results/",
   ]),
+  js.configs.recommended,
+  tseslint.configs.strict,
+  tseslint.configs.stylistic,
+  react.configs.flat.recommended,
+  react.configs.flat["jsx-runtime"],
   {
-    files: ["**/src/**/*.{js,mjs,cjs,ts,jsx,tsx}"],
+    languageOptions: {
+      ...react.configs.flat.recommended.languageOptions,
+      globals: {
+        ...globals.serviceworker,
+        ...globals.browser,
+      },
+    },
+    settings: { react: { version: "detect" } },
+  },
+  reactDom.configs.recommended,
+  reactHooks.configs.flat["recommended-latest"],
+  reactRefresh.configs.vite,
+  {
+    basePath: "src",
+    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     extends: [
-      js.configs.recommended,
       tseslint.configs.strictTypeChecked,
       tseslint.configs.stylisticTypeChecked,
-      reactHooks.configs.flat["recommended-latest"],
-      reactRefresh.configs.vite,
     ],
     languageOptions: {
-      ...languageOptions,
       parserOptions: {
         project: ["./tsconfig.node.json", "./tsconfig.app.json"],
         tsconfigRootDir: import.meta.dirname,
@@ -57,13 +65,6 @@ export default defineConfig([
   },
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs.flat["recommended-latest"],
-      reactRefresh.configs.vite,
-    ],
-    languageOptions,
     rules: {
       "@typescript-eslint/consistent-type-definitions": "off",
       "@typescript-eslint/consistent-type-imports": [
@@ -86,15 +87,21 @@ export default defineConfig([
           allow: ["debug", "error", "info", "trace", "warn"],
         },
       ],
-    },
-  },
-  {
-    // Configure.mdx
-    files: ["**/*.mdx"],
-    extends: [react.configs.flat["jsx-runtime"]],
-    rules: {
-      "react/jsx-uses-vars": "error",
-      "tailwindcss/no-custom-classname": "off",
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector:
+            "ImportDeclaration[source.value='react'][specifiers.0.type='ImportDefaultSpecifier']",
+          message:
+            "Default React import not allowed since we use the TypeScript jsx-transform. If you need a global type that collides with a React named export (such as `MouseEvent`), try using `globalThis.MouseHandler`",
+        },
+        {
+          selector:
+            "ImportDeclaration[source.value='react'] :matches(ImportNamespaceSpecifier)",
+          message:
+            "Named * React import is not allowed. Please import what you need from React with Named Imports",
+        },
+      ],
     },
   },
   mdx.flat,
