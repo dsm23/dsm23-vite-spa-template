@@ -4,6 +4,7 @@ import react from "eslint-plugin-react";
 import reactDom from "eslint-plugin-react-dom";
 import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
+import storybook from "eslint-plugin-storybook";
 import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
@@ -21,6 +22,7 @@ export default defineConfig([
   tseslint.configs.stylistic,
   react.configs.flat.recommended,
   react.configs.flat["jsx-runtime"],
+  storybook.configs["flat/recommended"],
   {
     languageOptions: {
       ...react.configs.flat.recommended.languageOptions,
