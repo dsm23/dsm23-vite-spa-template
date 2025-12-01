@@ -1,12 +1,2 @@
-__tmp__/
-.turbo
-dist/
-node_modules/
-target/
-compiled/
-coverage/
 infra/templates/**/*.yaml
-
-lerna.json
-test-timings.json
 pnpm-lock.yaml
