@@ -1,4 +1,5 @@
 import js from "@eslint/js";
+import prettier from "eslint-config-prettier";
 import * as mdx from "eslint-plugin-mdx";
 import react from "eslint-plugin-react";
 import reactDom from "eslint-plugin-react-dom";
@@ -17,6 +18,7 @@ export default defineConfig([
     "storybook-static/",
     "test-results/",
   ]),
+  prettier,
   js.configs.recommended,
   tseslint.configs.strict,
   tseslint.configs.stylistic,
