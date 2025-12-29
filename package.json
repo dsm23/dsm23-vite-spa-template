@@ -70,7 +70,7 @@
     "eslint-plugin-react-refresh": "0.4.26",
     "eslint-plugin-storybook": "10.1.10",
     "globals": "16.5.0",
-    "lefthook": "2.0.12",
+    "lefthook": "2.0.13",
     "npm-run-all2": "8.0.4",
     "prettier": "3.7.4",
     "prettier-plugin-css-order": "2.1.2",
