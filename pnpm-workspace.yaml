@@ -1,8 +1,7 @@
+blockExoticSubdeps: true
+
 onlyBuiltDependencies:
   - lefthook
-
-packages:
-  - "**"
 
 savePrefix: ""
 
