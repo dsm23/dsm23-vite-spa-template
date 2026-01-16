@@ -72,7 +72,7 @@
     "eslint-plugin-storybook": "10.1.11",
     "eslint-plugin-tailwind-canonical-classes": "1.1.0",
     "globals": "17.0.0",
-    "lefthook": "2.0.14",
+    "lefthook": "2.0.15",
     "npm-run-all2": "8.0.4",
     "prettier": "3.7.4",
     "prettier-plugin-css-order": "2.2.0",
