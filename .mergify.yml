@@ -23,18 +23,17 @@ shared:
 
 merge_queue:
   max_parallel_checks: 1
+  reset_on_external_merge: never
 
 queue_rules:
   - name: dep-update
-    # allow_queue_branch_edit: true
+    allow_queue_branch_edit: true
     autoqueue: true
     batch_max_wait_time: 30 min
     queue_conditions: &queue_conditions
       - author = renovate[bot]
       - and: *common_checks
     merge_conditions: *queue_conditions
-    # update_bot_account: dsm23
-    # update_method: rebase
 
 pull_request_rules:
   - name: automatic approval
@@ -66,22 +65,19 @@ pull_request_rules:
   - name: Automatically queue Renovate PRs
     conditions:
       - author = renovate[bot]
-      - or:
-          - conflict
-          - -conflict
     actions:
       queue:
 
-  # - name: Ask Renovate to rebase when out of date
-  #   conditions:
-  #     - author = renovate[bot]
-  #     - queue-name = dep-update
-  #     - queue-position = 0
-  #     - "#commits-behind > 0"
-  #   actions:
-  #     label:
-  #       add:
-  #         - rebase
+  - name: Ask Renovate to rebase when out of date
+    conditions:
+      - author = renovate[bot]
+      - queue-name = dep-update
+      - queue-position = 0
+      - "#commits-behind > 0"
+    actions:
+      label:
+        add:
+          - rebase
 
   - name: automatic deletion of head branch after merge
     conditions:
