@@ -32,6 +32,8 @@
     }
   ],
   "ignoreDeps": ["ghcr.io/dsm23/dsm23-vite-spa-template"],
+  "internalChecksFilter": "strict",
+  "minimumReleaseAge": "3 days",
   "packageRules": [
     {
       "extends": ["packages:eslint"],
