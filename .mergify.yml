@@ -23,15 +23,14 @@ shared:
 
 merge_queue:
   max_parallel_checks: 1
-  reset_on_external_merge: never
 
 queue_rules:
   - name: dep-update
-    allow_queue_branch_edit: true
     autoqueue: true
     batch_max_wait_time: 30 min
     queue_conditions: &queue_conditions
       - author = renovate[bot]
+      - "#approved-reviews-by >= 1"
       - and: *common_checks
     merge_conditions: *queue_conditions
 
@@ -57,6 +56,7 @@ pull_request_rules:
   - name: Automatically merge when GitHub Actions jobs succeed
     conditions:
       - author != renovate[bot]
+      - "#approved-reviews-by >= 1"
       - and: *common_checks
     actions:
       merge:
