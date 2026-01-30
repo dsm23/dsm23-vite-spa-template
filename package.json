@@ -44,7 +44,7 @@
     "@fast-check/vitest": "0.2.4",
     "@ianvs/prettier-plugin-sort-imports": "4.7.0",
     "@nabla/vite-plugin-eslint": "2.0.6",
-    "@playwright/test": "1.57.0",
+    "@playwright/test": "1.58.0",
     "@storybook/addon-docs": "10.2.0",
     "@storybook/addon-links": "10.2.0",
     "@storybook/addon-vitest": "10.2.0",
