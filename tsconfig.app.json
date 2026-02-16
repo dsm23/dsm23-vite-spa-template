@@ -29,5 +29,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "test-utils"]
+  "include": [".storybook", "src", "test-utils"]
 }
