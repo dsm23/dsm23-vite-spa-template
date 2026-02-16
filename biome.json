@@ -45,7 +45,7 @@
   },
   "overrides": [
     {
-      "includes": ["**/*.{spec,test}.{ts,tsx}"],
+      "includes": ["**/*.{spec,test}.{ts,tsx}", "**/{spec,test}.{ts,tsx}"],
       "linter": {
         "rules": {
           "a11y": {
