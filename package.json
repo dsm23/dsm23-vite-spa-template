@@ -70,6 +70,7 @@
     "eslint-plugin-storybook": "10.2.8",
     "eslint-plugin-tailwind-canonical-classes": "1.1.0",
     "globals": "17.3.0",
+    "jsdom": "28.1.0",
     "lefthook": "2.1.1",
     "npm-run-all2": "8.0.4",
     "postcss": "8.5.6",
