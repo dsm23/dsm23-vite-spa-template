@@ -51,4 +51,5 @@ jobs:
         with:
           onlyChanged: true
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          skip: renovate/!(**radix-ui-**|major-tailwindcss-monorepo)**
           zip: true
