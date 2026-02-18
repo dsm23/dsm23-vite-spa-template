@@ -13,14 +13,13 @@ on:
     branches:
       - main
 
-permissions:
-  contents: read
-  # Write permissions for pull-requests are required for using the `comment-summary-in-pr` option, comment out if you aren't using this option
-  pull-requests: write
+permissions: {}
 
 jobs:
   dependency-review:
     runs-on: ubuntu-24.04
+    permissions:
+      pull-requests: write
     steps:
       - name: Harden Runner
         uses: step-security/harden-runner@5ef0c079ce82195b2a36a210272d6b661572d83e # v2.14.2
