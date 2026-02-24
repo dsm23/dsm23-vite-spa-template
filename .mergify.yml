@@ -33,39 +33,38 @@ merge_protections:
     if:
       - base = main
     success_conditions:
-      - "title ~= ^(fix|feat|docs|style|refactor|perf|test|build|ci|chore|revert)(?:(.+))?:"
+      - "title ~=
+        ^(fix|feat|docs|style|refactor|perf|test|build|ci|chore|revert)(?:\\(.+\
+        \\))?:"
+
+merge_protections_settings:
+  reporting_method: check-runs
+  post_comment: true
 
 merge_queue:
-  max_parallel_checks: 1
+  max_parallel_checks: 5
 
 queue_rules:
   - name: dep-update
     autoqueue: true
-    batch_max_wait_time: 30 min
+    allow_queue_branch_edit: true
+    batch_size: 5
+    batch_max_wait_time: 5 min
     queue_conditions: &queue_conditions
       - author = renovate[bot]
       - "#approved-reviews-by >= 1"
       - and: *common_checks
-    merge_conditions: *queue_conditions
+    merge_conditions:
+      - label != rebase
+      - and: *queue_conditions
 
 pull_request_rules:
   - name: automatic approval
-    conditions:
-      - author != renovate[bot]
-      - and: *common_checks
+    conditions: *common_checks
     actions:
       review:
         type: APPROVE
         message: "Automatically approving {{ author }}"
-
-  - name: automatic approval for Renovate pull requests
-    conditions:
-      - author = renovate[bot]
-      - and: *common_checks
-    actions:
-      review:
-        type: APPROVE
-        message: Automatically approving renovate
 
   - name: Automatically merge when GitHub Actions jobs succeed
     conditions:
@@ -87,7 +86,9 @@ pull_request_rules:
       - author = renovate[bot]
       - queue-name = dep-update
       - queue-position = 0
-      - "#commits-behind > 0"
+      - or:
+          - "#commits-behind > 0"
+          - conflict
     actions:
       label:
         add:
