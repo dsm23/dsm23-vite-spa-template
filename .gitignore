@@ -29,7 +29,6 @@ lefthook-local.yml
 # Cache Files
 .eslintmdcache
 .stylelintcache
-.prettiercache
 
 # @nabla/vite-plugin-eslint
 .eslintcache
