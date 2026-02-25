@@ -1,5 +1,5 @@
-import type { ReactElement } from "react";
 import { afterEach } from "vitest";
+import type { ReactElement } from "react";
 import { cleanup, render } from "@testing-library/react";
 import type { Queries, RenderOptions } from "@testing-library/react";
 
