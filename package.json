@@ -40,7 +40,7 @@
     "@commitlint/types": "20.4.0",
     "@eslint/js": "9.39.3",
     "@fast-check/vitest": "0.2.4",
-    "@nabla/vite-plugin-eslint": "2.0.6",
+    "@nabla/vite-plugin-eslint": "3.0.0",
     "@playwright/test": "1.58.2",
     "@storybook/addon-docs": "10.2.13",
     "@storybook/addon-links": "10.2.13",
