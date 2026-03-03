@@ -58,8 +58,8 @@ importers:
         specifier: 0.2.4
         version: 0.2.4(vitest@4.0.18)
       '@nabla/vite-plugin-eslint':
-        specifier: 2.0.6
-        version: 2.0.6(eslint@9.39.3(jiti@2.6.1))(vite@7.3.1(@types/node@24.11.0)(jiti@2.6.1)(lightningcss@1.31.1)(yaml@2.8.2))
+        specifier: 3.0.0
+        version: 3.0.0(eslint@9.39.3(jiti@2.6.1))(vite@7.3.1(@types/node@24.11.0)(jiti@2.6.1)(lightningcss@1.31.1)(yaml@2.8.2))
       '@playwright/test':
         specifier: 1.58.2
         version: 1.58.2
@@ -890,10 +890,10 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
 
-  '@nabla/vite-plugin-eslint@2.0.6':
-    resolution: {integrity: sha512-QQZwq7aTx2WtG2/c2ASF+amNAytbLY8LYYc71bECIMzRr7Y7Cx3o6oAQrcb1qQbq2+z2S2rq7i7o5LTskQi8sA==}
+  '@nabla/vite-plugin-eslint@3.0.0':
+    resolution: {integrity: sha512-zUrwkXbGEbwvy4j4zP9RcLv/lkC2+hYC8kfalmXzZfTtG4t3SEGxHKhGk14Cu62vDrm1DyQ4yVlEC1MxPL+Q6A==}
     peerDependencies:
-      eslint: ^8.45 || ^9
+      eslint: ^9 || ^10
       vite: ^4 || ^5 || ^6 || ^7
 
   '@neoconfetti/react@1.0.0':
@@ -6022,7 +6022,7 @@ snapshots:
       '@types/react': 19.2.14
       react: 19.2.4
 
-  '@nabla/vite-plugin-eslint@2.0.6(eslint@9.39.3(jiti@2.6.1))(vite@7.3.1(@types/node@24.11.0)(jiti@2.6.1)(lightningcss@1.31.1)(yaml@2.8.2))':
+  '@nabla/vite-plugin-eslint@3.0.0(eslint@9.39.3(jiti@2.6.1))(vite@7.3.1(@types/node@24.11.0)(jiti@2.6.1)(lightningcss@1.31.1)(yaml@2.8.2))':
     dependencies:
       '@types/eslint': 9.6.1
       chalk: 4.1.2
