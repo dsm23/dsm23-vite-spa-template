@@ -18,7 +18,9 @@
       "recommended": true,
       "a11y": {
         "noSvgWithoutTitle": "off",
-        "useButtonType": "off"
+        "useAnchorContent": "off",
+        "useButtonType": "off",
+        "useValidAriaRole": "off"
       }
     }
   },

@@ -8,29 +8,26 @@ import {
   DropdownMenuTrigger,
 } from "~/components/dropdown-menu";
 import { useTheme } from "~/components/theme-provider";
-import type { Theme } from "~/components/theme-provider";
 
 const ThemeSwitcher = () => {
   const { theme, setTheme } = useTheme();
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm">
-          <span className="sr-only">Theme switcher</span>
-          {theme === "light" ? (
-            <Sun key="light" className="size-4 text-muted-foreground" />
-          ) : theme === "dark" ? (
-            <Moon key="dark" className="size-4 text-muted-foreground" />
-          ) : (
-            <Laptop key="system" className="size-4 text-muted-foreground" />
-          )}
-        </Button>
+      <DropdownMenuTrigger render={<Button variant="ghost" size="sm" />}>
+        <span className="sr-only">Theme switcher</span>
+        {theme === "light" ? (
+          <Sun key="light" className="size-4 text-muted-foreground" />
+        ) : theme === "dark" ? (
+          <Moon key="dark" className="size-4 text-muted-foreground" />
+        ) : (
+          <Laptop key="system" className="size-4 text-muted-foreground" />
+        )}
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-fit" align="start">
         <DropdownMenuRadioGroup
           value={theme}
-          onValueChange={(e) => setTheme(e as Theme)}
+          onValueChange={(e: Parameters<typeof setTheme>[0]) => setTheme(e)}
         >
           <DropdownMenuRadioItem className="flex gap-2" value="light">
             <Sun className="size-4 text-muted-foreground" /> <span>Light</span>
