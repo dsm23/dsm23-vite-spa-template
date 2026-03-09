@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
 import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { render } from "~/test-utils/render";
 import { ThemeProvider, useTheme } from ".";
-import { render } from "../../../test-utils";
 
 vi.stubGlobal("matchMedia", (query: string) => ({
   matches: false,

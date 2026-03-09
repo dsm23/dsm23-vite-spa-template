@@ -269,7 +269,7 @@ const LP_GRID_ITEMS = [
     ),
   },
   {
-    title: "Radix UI",
+    title: "Base UI",
     description: "Headless UI components for endless customization.",
     icon: (
       <svg
@@ -452,18 +452,25 @@ const App = () => (
               tools for a smooth and enjoyable development process.
             </p>
 
-            <Button asChild>
-              <a
-                href="https://github.com/dsm23/dsm23-vite-spa-template"
-                className="mr-3"
-              >
-                Get started
-              </a>
+            <Button
+              className="mr-3"
+              nativeButton={false}
+              size="lg"
+              render={
+                <a href="https://github.com/dsm23/dsm23-vite-spa-template" />
+              }
+            >
+              Get started
             </Button>
-            <Button variant="outline" asChild>
-              <a href="https://vercel.com/new/git/external?repository-url=https://github.com/dsm23/dsm23-vite-spa-template/">
-                Deploy Now
-              </a>
+            <Button
+              variant="outline"
+              nativeButton={false}
+              size="lg"
+              render={
+                <a href="https://vercel.com/new/git/external?repository-url=https://github.com/dsm23/dsm23-vite-spa-template/" />
+              }
+            >
+              Deploy Now
             </Button>
           </div>
         </div>

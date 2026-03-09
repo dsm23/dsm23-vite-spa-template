@@ -1,7 +1,8 @@
 import { describe, expect } from "vitest";
 import crypto from "node:crypto";
 import { fc, it } from "@fast-check/vitest";
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
+import { render } from "~/test-utils/render";
 import { Button } from ".";
 
 describe("component", () => {
@@ -21,16 +22,17 @@ describe("component", () => {
       );
     });
 
-    it("should render correctly, asChild, with various children", () => {
+    it("should render correctly, with render prop, with various children", () => {
       fc.assert(
         fc.property(fc.string(), fc.webUrl(), (linkText, href) => {
           const id = crypto.randomUUID();
 
           render(
-            <Button asChild>
-              <a href={href} data-testid={id}>
-                {linkText}
-              </a>
+            <Button
+              nativeButton={false}
+              render={<a href={href} data-testid={id} />}
+            >
+              {linkText}
             </Button>,
           );
 

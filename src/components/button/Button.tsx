@@ -1,27 +1,31 @@
-import type { ComponentProps } from "react";
+"use client";
+
+import { isValidElement } from "react";
+import type { FunctionComponent } from "react";
+import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import type { VariantProps } from "class-variance-authority";
-import { Slot } from "radix-ui";
 import { cn } from "~/utils/class-names";
+import { isFunction } from "~/utils/is-type";
 import buttonVariants from "./buttonVariants";
 
-const Button = ({
+const Button: FunctionComponent<
+  ButtonPrimitive.Props & VariantProps<typeof buttonVariants>
+> = ({
   className,
+  render,
   variant = "default",
   size = "default",
-  asChild = false,
   ...props
-}: ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  }) => {
-  const Comp = asChild ? Slot.Root : "button";
+}) => {
+  const isAnchor =
+    isValidElement(render) && render.type === "a" && !isFunction(render);
 
   return (
-    <Comp
+    <ButtonPrimitive
       data-slot="button"
-      data-variant={variant}
-      data-size={size}
       className={cn(buttonVariants({ variant, size, className }))}
+      render={render}
+      role={isAnchor ? "link" : "button"}
       {...props}
     />
   );

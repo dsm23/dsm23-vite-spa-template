@@ -1,8 +1,9 @@
-import { describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 import type { ReactElement } from "react";
-import { screen } from "@testing-library/react";
+import { cleanup, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { Options } from "@testing-library/user-event";
+import { render } from "~/test-utils/render";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -20,7 +21,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from ".";
-import { render } from "../../../test-utils";
 
 const setup = (jsx: ReactElement, opts?: Options) => ({
   user: userEvent.setup(opts),
@@ -30,6 +30,10 @@ const setup = (jsx: ReactElement, opts?: Options) => ({
 });
 
 describe("DropdownMenu components", () => {
+  afterEach(() => {
+    cleanup();
+  });
+
   it("renders DropdownMenuTrigger and opens menu on click", async () => {
     const { user } = setup(
       <DropdownMenu>
@@ -45,8 +49,8 @@ describe("DropdownMenu components", () => {
 
     await user.click(screen.getByText("Options"));
 
-    expect(screen.getByText("Item 1")).toBeInTheDocument();
-    expect(screen.getByText("Item 2")).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByText("Item 1")).toBeInTheDocument());
+    await waitFor(() => expect(screen.getByText("Item 2")).toBeInTheDocument());
   });
 
   it("renders DropdownMenuCheckboxItem with checked state", async () => {
@@ -63,9 +67,12 @@ describe("DropdownMenu components", () => {
 
     await user.click(screen.getByText("Options"));
 
-    const checkboxItem = screen.getByText("Checkbox Item");
-    expect(checkboxItem).toBeInTheDocument();
-    expect(checkboxItem).toHaveAttribute("aria-checked", "true");
+    const checkboxItem = () => screen.queryByText("Checkbox Item");
+
+    await waitFor(() => expect(checkboxItem()).toBeInTheDocument());
+    await waitFor(() =>
+      expect(checkboxItem()).toHaveAttribute("aria-checked", "true"),
+    );
   });
 
   it("renders DropdownMenuRadioItem with selected state", async () => {
@@ -84,9 +91,12 @@ describe("DropdownMenu components", () => {
 
     await user.click(screen.getByText("Options"));
 
-    const radioItem = screen.getByText("Radio Item");
-    expect(radioItem).toBeInTheDocument();
-    expect(radioItem).toHaveAttribute("aria-checked", "true");
+    const radioItem = () => screen.queryByText("Radio Item");
+
+    await waitFor(() => expect(radioItem()).toBeInTheDocument());
+    await waitFor(() =>
+      expect(radioItem()).toHaveAttribute("aria-checked", "true"),
+    );
   });
 
   it("renders DropdownMenuLabel and separator", async () => {
@@ -94,17 +104,21 @@ describe("DropdownMenu components", () => {
       <DropdownMenu>
         <DropdownMenuTrigger>Options</DropdownMenuTrigger>
         <DropdownMenuContent>
-          <DropdownMenuLabel>Label</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem>Item 1</DropdownMenuItem>
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>Label</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Item 1</DropdownMenuItem>
+          </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>,
     );
 
     await user.click(screen.getByText("Options"));
 
-    expect(screen.getByText("Label")).toBeInTheDocument();
-    expect(screen.getByRole("separator")).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByText("Label")).toBeInTheDocument());
+    await waitFor(() =>
+      expect(screen.getByRole("separator")).toBeInTheDocument(),
+    );
   });
 
   it("renders DropdownMenuShortcut", async () => {
@@ -121,7 +135,7 @@ describe("DropdownMenu components", () => {
 
     await user.click(screen.getByText("Options"));
 
-    expect(screen.getByText("⌘+K")).toBeInTheDocument();
+    await waitFor(() => expect(screen.getByText("⌘+K")).toBeInTheDocument());
   });
 
   it("renders DropdownMenuGroup with items", async () => {
@@ -139,8 +153,12 @@ describe("DropdownMenu components", () => {
 
     await user.click(screen.getByText("Options"));
 
-    expect(screen.getByText("Grouped Item 1")).toBeInTheDocument();
-    expect(screen.getByText("Grouped Item 2")).toBeInTheDocument();
+    await waitFor(() =>
+      expect(screen.getByText("Grouped Item 1")).toBeInTheDocument(),
+    );
+    await waitFor(() =>
+      expect(screen.getByText("Grouped Item 2")).toBeInTheDocument(),
+    );
   });
 
   it("renders DropdownMenuSub with content", async () => {
@@ -148,8 +166,10 @@ describe("DropdownMenu components", () => {
       <DropdownMenu>
         <DropdownMenuTrigger>Options</DropdownMenuTrigger>
         <DropdownMenuContent className="w-56">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
-          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+          </DropdownMenuGroup>
           <DropdownMenuGroup>
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
@@ -176,7 +196,15 @@ describe("DropdownMenu components", () => {
     expect(screen.queryByText("Item One")).not.toBeInTheDocument();
     expect(screen.queryByText("Item Two")).not.toBeInTheDocument();
 
+    await waitFor(() =>
+      expect(screen.getByText("Second trigger")).toBeInTheDocument(),
+    );
+
     await user.click(screen.getByText("Second trigger"));
+
+    await waitFor(() =>
+      expect(screen.getByText("Item One")).toBeInTheDocument(),
+    );
 
     expect(screen.getByText("Item One")).toBeInTheDocument();
     expect(screen.getByText("Item Two")).toBeInTheDocument();
