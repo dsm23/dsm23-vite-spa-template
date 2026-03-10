@@ -5,7 +5,7 @@ type TypeMap = {
   Array: unknown[];
   Date: Date;
   RegExp: RegExp;
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
+  // oxlint-disable-next-line ban-types, no-unsafe-function-type
   Function: Function;
   Object: object;
   Null: null;

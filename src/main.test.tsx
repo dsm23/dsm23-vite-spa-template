@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-vi.mock("./App", () => ({
+vi.mock("./app", () => ({
   __esModule: true,
   default: () => <div>Hello, World!</div>,
 }));
