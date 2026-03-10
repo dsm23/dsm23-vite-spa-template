@@ -18,9 +18,6 @@ pre-commit:
         - "*.md"
         - "*.mdx"
 
-    biome:
-      run: ./node_modules/.bin/biome lint --no-errors-on-unmatched {staged_files}
-
 commit-msg:
   commands:
     commitlint:

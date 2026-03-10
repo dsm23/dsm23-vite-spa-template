@@ -1,5 +1,3 @@
-// biome-ignore-all lint/complexity/noBannedTypes: biome will be deleted soon
-
 type TypeMap = {
   String: string;
   Number: number;
