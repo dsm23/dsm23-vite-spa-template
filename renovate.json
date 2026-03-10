@@ -34,10 +34,6 @@
       "minimumReleaseAge": "3 days"
     },
     {
-      "extends": ["packages:eslint"],
-      "groupName": "eslint packages"
-    },
-    {
       "extends": ["packages:react"],
       "groupName": "react packages"
     },
@@ -51,14 +47,6 @@
         "playwright",
         "@playwright/test",
         "mcr.microsoft.com/playwright"
-      ]
-    },
-    {
-      "groupName": "storybook monorepo",
-      "matchPackageNames": [
-        "@storybook/**",
-        "eslint-plugin-storybook",
-        "storybook"
       ]
     }
   ],

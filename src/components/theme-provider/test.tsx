@@ -15,6 +15,7 @@ vi.stubGlobal("matchMedia", (query: string) => ({
   dispatchEvent: vi.fn(),
 }));
 
+// oxlint-disable-next-line react/only-export-components
 const MockComponent = () => {
   const { theme, setTheme } = useTheme();
 

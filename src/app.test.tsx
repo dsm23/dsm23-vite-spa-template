@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { render } from "@testing-library/react";
-import App from "./App";
+import App from "./app";
 
 vi.stubGlobal("matchMedia", (query: string) => ({
   matches: false,

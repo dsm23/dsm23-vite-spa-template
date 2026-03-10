@@ -1,5 +1,4 @@
-/* eslint-disable no-constant-binary-expression */
-/* eslint-disable @typescript-eslint/no-unnecessary-condition */
+/* oxlint-disable no-constant-binary-expression */
 
 import { describe, expect, it } from "vitest";
 import { cn } from ".";

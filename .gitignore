@@ -27,11 +27,7 @@ dist-ssr
 lefthook-local.yml
 
 # Cache Files
-.eslintmdcache
 .stylelintcache
-
-# @nabla/vite-plugin-eslint
-.eslintcache
 
 # coverage
 .vitest-reports/
