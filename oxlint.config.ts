@@ -38,6 +38,9 @@ export default defineConfig({
     "storybook-static/",
     "test-results/",
   ],
+  options: {
+    typeAware: true,
+  },
   rules: {
     "max-lines": "off",
     "max-lines-per-function": [
@@ -78,6 +81,7 @@ export default defineConfig({
           "Named * React import is not allowed. Please import what you need from React with Named Imports",
       },
     ],
+    "no-negated-condition": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "jsx-a11y/anchor-has-content": "off",
     "oxc/no-async-await": "off",
@@ -115,7 +119,10 @@ export default defineConfig({
     ],
     "typescript/explicit-function-return-type": "off",
     "typescript/explicit-module-boundary-types": "off",
+    "typescript/no-confusing-void-expression": "off",
+    "typescript/no-unsafe-type-assertion": "off",
     "typescript/prefer-readonly-parameter-types": "off",
+    "typescript/strict-boolean-expressions": "off",
     "unicorn/filename-case": [
       "warn",
       {
