@@ -139,7 +139,6 @@ export default defineConfig({
         "**/*.story.@(ts|tsx|js|jsx|mjs|cjs)",
       ],
       rules: {
-        "import-x/no-anonymous-default-export": "off",
         "storybook/await-interactions": "warn",
         "storybook/context-in-play-function": "warn",
         "storybook/default-exports": "warn",
