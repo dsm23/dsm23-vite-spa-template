@@ -1,4 +1,4 @@
-/* oxlint-disable no-constant-binary-expression */
+/* oxlint-disable no-constant-binary-expression, no-unnecessary-condition */
 
 import { describe, expect, it } from "vitest";
 import { cn } from ".";
