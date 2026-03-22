@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { screen } from "@testing-library/react";
 import { render } from "~/test-utils/render";
 import { Button } from ".";
+import buttonVariants from "./buttonVariants";
 
 describe("component", () => {
   describe("Button", () => {
@@ -13,9 +14,9 @@ describe("component", () => {
 
     it("should render correctly, with render prop", () => {
       render(
-        <Button nativeButton={false} render={<a href="#" />}>
+        <a href="#" className={buttonVariants()}>
           Hello, World!
-        </Button>,
+        </a>,
       );
 
       expect(screen.getByRole("link")).toBeInTheDocument();
