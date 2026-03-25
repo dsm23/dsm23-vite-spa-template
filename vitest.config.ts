@@ -8,6 +8,9 @@ export default mergeConfig(
   viteConfig,
   defineConfig({
     test: {
+      expect: {
+        requireAssertions: true,
+      },
       coverage: {
         include: ["src/**/*.[jt]s?(x)"],
         exclude: [
