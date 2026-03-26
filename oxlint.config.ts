@@ -9,6 +9,7 @@ export default defineConfig({
     "react",
     "typescript",
     "unicorn",
+    "vitest",
   ],
   jsPlugins: [
     "eslint-plugin-react-dom",
@@ -24,12 +25,9 @@ export default defineConfig({
     nursery: "warn",
   },
   env: {
-    builtin: true,
     browser: true,
+    node: true,
     serviceworker: true,
-  },
-  globals: {
-    process: "readonly",
   },
   ignorePatterns: [
     "coverage/",
@@ -130,7 +128,15 @@ export default defineConfig({
       },
     ],
     "vitest/consistent-vitest-vi": "warn",
-    "vitest/no-importing-vitest-globals": "warn",
+    "vitest/no-conditional-expect": "off",
+    "vitest/no-conditional-in-test": "off",
+    "vitest/no-importing-vitest-globals": "off",
+    "vitest/no-standalone-expect": [
+      "warn",
+      {
+        additionalTestBlockFunctions: ["fc.property"],
+      },
+    ],
   },
   overrides: [
     {
