@@ -24,6 +24,7 @@
   "ignoreDeps": ["ghcr.io/dsm23/dsm23-vite-spa-template"],
   "packageRules": [
     {
+      "description": "Apply minimum release age to all relevant datasources with timestamps",
       "internalChecksFilter": "strict",
       "matchDatasources": [
         "github-releases",
@@ -32,6 +33,13 @@
         "npm"
       ],
       "minimumReleaseAge": "3 days"
+    },
+    {
+      "description": "Apply minimum release age to docker datasource regardless of timestamps",
+      "internalChecksFilter": "strict",
+      "matchDatasources": ["docker"],
+      "minimumReleaseAge": "3 days",
+      "minimumReleaseAgeBehaviour": "timestamp-optional"
     },
     {
       "extends": ["packages:react"],
