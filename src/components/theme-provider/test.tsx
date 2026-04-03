@@ -8,11 +8,11 @@ vi.stubGlobal("matchMedia", (query: string) => ({
   matches: false,
   media: query,
   onchange: null,
-  addListener: vi.fn(), // Deprecated
-  removeListener: vi.fn(), // Deprecated
-  addEventListener: vi.fn(),
-  removeEventListener: vi.fn(),
-  dispatchEvent: vi.fn(),
+  addListener: vi.fn<() => void>(), // Deprecated
+  removeListener: vi.fn<() => void>(), // Deprecated
+  addEventListener: vi.fn<() => void>(),
+  removeEventListener: vi.fn<() => void>(),
+  dispatchEvent: vi.fn<() => void>(),
 }));
 
 // oxlint-disable-next-line react/only-export-components
