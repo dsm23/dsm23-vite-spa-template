@@ -37,7 +37,7 @@
     "@commitlint/cli": "20.5.0",
     "@commitlint/config-conventional": "20.5.0",
     "@commitlint/types": "20.5.0",
-    "@fast-check/vitest": "0.3.0",
+    "@fast-check/vitest": "0.4.0",
     "@playwright/test": "1.59.1",
     "@storybook/addon-docs": "10.3.4",
     "@storybook/addon-links": "10.3.4",
