@@ -11,10 +11,7 @@ export default defineConfig({
     "unicorn",
     "vitest",
   ],
-  jsPlugins: [
-    "eslint-plugin-react-dom",
-    "eslint-plugin-tailwind-canonical-classes",
-  ],
+  jsPlugins: ["eslint-plugin-tailwind-canonical-classes"],
   categories: {
     correctness: "warn",
     suspicious: "warn",
@@ -89,18 +86,6 @@ export default defineConfig({
     "react/jsx-filename-extension": "off",
     "react/no-multi-comp": "off",
     "react/react-in-jsx-scope": "off",
-    "react-dom/no-dangerously-set-innerhtml": "warn",
-    "react-dom/no-dangerously-set-innerhtml-with-children": "warn",
-    "react-dom/no-find-dom-node": "warn",
-    "react-dom/no-flush-sync": "warn",
-    "react-dom/no-hydrate": "warn",
-    "react-dom/no-namespace": "warn",
-    "react-dom/no-render": "warn",
-    "react-dom/no-render-return-value": "warn",
-    "react-dom/no-script-url": "warn",
-    "react-dom/no-unsafe-iframe-sandbox": "warn",
-    "react-dom/no-use-form-state": "warn",
-    "react-dom/no-void-elements-with-children": "warn",
     "tailwind-canonical-classes/tailwind-canonical-classes": [
       "warn",
       {
