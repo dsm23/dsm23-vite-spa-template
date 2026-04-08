@@ -21,7 +21,7 @@ const initialState: ThemeProviderState = {
   setTheme: noop,
 };
 
-const ThemeProviderContext = createContext<ThemeProviderState>(initialState);
+const ThemeProviderContext = createContext(initialState);
 
 export function ThemeProvider({
   children,
