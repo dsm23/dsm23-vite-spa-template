@@ -121,6 +121,7 @@ const DropdownMenuSubTrigger = ({
       {...props}
     >
       {children}
+      {/* oxlint-disable-next-line better-tailwindcss/no-unknown-classes */}
       <ChevronRightIcon className="cn-rtl-flip ml-auto" />
     </MenuPrimitive.SubmenuTrigger>
   );
