@@ -59,7 +59,7 @@
     "eslint-plugin-storybook": "10.3.4",
     "jsdom": "29.0.1",
     "knip": "6.3.0",
-    "lefthook": "2.1.4",
+    "lefthook": "2.1.5",
     "npm-run-all2": "8.0.4",
     "oxfmt": "0.43.0",
     "oxlint": "1.58.0",
