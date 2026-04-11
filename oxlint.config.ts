@@ -58,7 +58,7 @@ export default defineConfig({
     "no-console": [
       "warn",
       {
-        allow: ["debug", "warn", "info", "trace", "warn"],
+        allow: ["debug", "error", "info", "trace", "warn"],
       },
     ],
     "no-empty-function": ["warn", { allow: ["arrowFunctions"] }],
