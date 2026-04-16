@@ -62,7 +62,7 @@
     "lefthook": "2.1.5",
     "npm-run-all2": "8.0.4",
     "oxfmt": "0.44.0",
-    "oxlint": "1.59.0",
+    "oxlint": "1.60.0",
     "oxlint-tsgolint": "0.20.0",
     "storybook": "10.3.5",
     "stylelint": "17.6.0",
