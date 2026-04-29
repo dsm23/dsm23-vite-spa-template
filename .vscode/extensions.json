@@ -6,6 +6,8 @@
     "joshbolduc.commitlint",
     "ms-azuretools.vscode-containers",
     "ms-playwright.playwright",
+    "ms-vscode.makefile-tools",
+    "nefrob.vscode-just-syntax",
     "oxc.oxc-vscode",
     "stylelint.vscode-stylelint",
     "unifiedjs.vscode-mdx"
