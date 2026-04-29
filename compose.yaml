@@ -1,0 +1,10 @@
+services:
+  web:
+    build:
+      context: ./
+    develop:
+      watch:
+        - action: rebuild
+          path: .
+    ports:
+      - "8080:80"
