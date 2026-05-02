@@ -58,7 +58,7 @@
     "eslint-plugin-better-tailwindcss": "4.5.0",
     "eslint-plugin-storybook": "10.3.5",
     "jsdom": "29.1.0",
-    "knip": "6.8.0",
+    "knip": "6.9.0",
     "lefthook": "2.1.6",
     "npm-run-all2": "8.0.4",
     "oxfmt": "0.47.0",
