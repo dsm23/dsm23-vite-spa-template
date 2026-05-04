@@ -1,10 +1,64 @@
 services:
   web:
+    platform: linux/amd64
     build:
       context: ./
+      dockerfile: ./docker/prod.Dockerfile
     develop:
       watch:
         - action: rebuild
           path: .
     ports:
       - "8080:80"
+
+  dev:
+    platform: linux/amd64
+    build:
+      context: ./
+      dockerfile: ./docker/dev.Dockerfile
+    develop:
+      watch:
+        - action: sync+restart
+          path: .
+          target: app/
+          ignore:
+            - node_modules/
+            - .git/
+            - .github/
+        - action: rebuild
+          path: package.json
+        # - action: sync+restart
+        #   path: app/
+
+    tty: true
+    ports:
+      - "4173-4180:4173-4180"
+      - "5173-5180:5173-5180"
+      - "6006-6010:6006-6010"
+
+  playwright:
+    image: mcr.microsoft.com/playwright:v1.59.1
+    depends_on:
+      - dev
+    ports:
+      - "9000:9000"
+    # --init: ensures signals are handled correctly (prevents zombie processes)
+    init: true
+    # --workdir: sets the starting directory
+    working_dir: /home/pwuser
+    # --user: runs as the non-root playwright user
+    user: pwuser
+    # --rm: handled automatically by compose when running 'docker compose down'
+    # --it: stdin_open and tty allow for interactive terminal behavior
+    # stdin_open: true
+    tty: true
+    # The command to execute
+    command: /bin/sh -c "npx -y playwright@1.59.1 run-server --port 9000 --host 0.0.0.0"
+
+    # Recommended Healthcheck for this specific service
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
