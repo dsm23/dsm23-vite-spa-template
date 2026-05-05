@@ -48,3 +48,8 @@ jobs:
           platforms: linux/amd64
           push: ${{ github.ref_name == github.event.repository.default_branch }}
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+      - name: Deploy to Coolify
+        if: ${{ github.ref_name == github.event.repository.default_branch }}
+        run: |
+          curl --request GET '${{ secrets.COOLIFY_WEBHOOK }}' --header 'Authorization: Bearer ${{ secrets.COOLIFY_TOKEN }}'
