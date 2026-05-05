@@ -1,0 +1,10 @@
+checking_base_sha: 4ac95bb050617d499f43b946e517e44808a1b009
+previous_failed_batches:
+  - checked_pull_requests:
+      - 1993
+      - 1992
+    draft_pr_number: 1994
+pull_requests:
+  - number: 1993
+    scopes: []
+scopes: []
