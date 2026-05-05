@@ -15,4 +15,4 @@ up:
     wait $DOCKER_PID
 
 down:
-    docker compose down --rmi all --volumes
+    docker compose down --rmi local --volumes
