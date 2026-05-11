@@ -27,6 +27,7 @@ export default mergeConfig(
         },
       },
       environment: "jsdom",
+      execArgv: ["--no-webstorage"],
       setupFiles: ["./test-utils/vitest.setup.ts"],
       globals: false,
       logHeapUsage: true,
