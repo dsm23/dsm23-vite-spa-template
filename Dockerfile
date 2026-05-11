@@ -1,18 +1,14 @@
 # syntax=docker.io/docker/dockerfile:1@sha256:2780b5c3bab67f1f76c781860de469442999ed1a0d7992a5efdf2cffc0e3d769
 
-# Stage 1: Base image for dependencies and build
-FROM node:24.15.0-alpine@sha256:d1b3b4da11eefd5941e7f0b9cf17783fc99d9c6fc34884a665f40a06dbdfc94f AS base
+FROM ghcr.io/pnpm/pnpm:11.0.9@sha256:a48f87a9bec3c86956a1bc3165c6498aff076234d0a01e628bca98a0523c2a9a AS base
 FROM nginx:1.30.0-alpine-slim@sha256:2fb5d772cea6ef1a8dab525df1b9485289eee167d26af9613fce27a12c060caa AS runtime
 
-# corepack is broken https://github.com/nodejs/corepack/issues/612
-# corepack was fixed but is will be removed from node from v25+
-# TODO: re-add corepack after it's been removed
-# RUN npm install -g corepack@latest
+# renovate: datasource=node-version depName=node
+ARG NODE_VERSION="26.1.0"
 
-# Install dependencies only when needed
+# Stage 1: Install dependencies only when needed
 FROM base AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why gcompat might be needed.
-RUN apk add --no-cache gcompat=1.1.0-r4
+
 WORKDIR /app
 
 ENV LEFTHOOK=0
@@ -21,8 +17,8 @@ ENV LEFTHOOK=0
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 
 # Install dependencies
-RUN --mount=type=cache,target=/root/.local/share/pnpm/store \
-  corepack enable pnpm && pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
+  pnpm runtime set node "$NODE_VERSION" -g && pnpm install --frozen-lockfile
 
 # Stage 2: Build stage
 FROM base AS builder
@@ -33,7 +29,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # Build the Vite project
-RUN corepack enable pnpm \
+RUN pnpm runtime set node "$NODE_VERSION" -g \
   && pnpm run build
 
 # Stage 3: Production image
