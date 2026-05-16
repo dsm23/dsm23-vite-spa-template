@@ -52,8 +52,8 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.1",
-    "@vitest/browser-playwright": "4.1.5",
-    "@vitest/coverage-v8": "4.1.5",
+    "@vitest/browser-playwright": "4.1.6",
+    "@vitest/coverage-v8": "4.1.6",
     "dotenv": "17.4.2",
     "eslint-plugin-better-tailwindcss": "4.5.0",
     "eslint-plugin-storybook": "10.3.6",
@@ -73,7 +73,7 @@
     "typed-query-selector": "2.12.2",
     "typescript": "6.0.3",
     "vite": "8.0.12",
-    "vitest": "4.1.5"
+    "vitest": "4.1.6"
   },
   "engines": {
     "node": ">=26.0.0"
