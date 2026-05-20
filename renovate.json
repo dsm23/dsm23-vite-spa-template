@@ -3,9 +3,9 @@
   "extends": [
     "config:best-practices",
     "customManagers:dockerfileVersions",
-    "group:jsUnitTest",
-    "group:vite",
+    "group:all",
     "helpers:pinGitHubActionDigestsToSemver",
+    "schedule:daily",
     "security:openssf-scorecard",
     ":approveMajorUpdates",
     ":enableVulnerabilityAlerts",
@@ -51,34 +51,6 @@
       "matchDatasources": ["docker"],
       "minimumReleaseAge": "3 days",
       "minimumReleaseAgeBehaviour": "timestamp-optional"
-    },
-    {
-      "extends": ["packages:react"],
-      "groupName": "react packages"
-    },
-    {
-      "extends": ["packages:stylelint"],
-      "groupName": "stylelint packages"
-    },
-    {
-      "matchPackageNames": ["ghcr.io/pnpm/pnpm"],
-      "matchDatasources": [],
-      "minimumReleaseAge": "3 days",
-      "sourceUrl": "https://github.com/pnpm/pnpm"
-    },
-    {
-      "groupName": "playwright monorepo",
-      "matchPackageNames": [
-        "playwright",
-        "@playwright/test",
-        "mcr.microsoft.com/playwright"
-      ]
-    },
-    {
-      "matchPackageNames": ["mcr.microsoft.com/playwright"],
-      "matchDatasources": [],
-      "minimumReleaseAge": "3 days",
-      "sourceUrl": "https://github.com/microsoft/playwright"
     }
   ],
   "rebaseWhen": "conflicted",
