@@ -1,10 +1,10 @@
 # syntax=docker.io/docker/dockerfile:1@sha256:87999aa3d42bdc6bea60565083ee17e86d1f3339802f543c0d03998580f9cb89
 
-FROM ghcr.io/pnpm/pnpm:11.19.0@sha256:1c69b4492d1162f01481d634b3e93acc3aa8b550e80e6deb852c7991a1c5249c AS base
+FROM ghcr.io/pnpm/pnpm:11.20.0@sha256:d77573aba1649491010d3d252214be47197c0706417793cf393ac47cc324f315 AS base
 FROM nginx:1.31.3-alpine-slim@sha256:45b82ed5f285b90d63df07ba70430fdd8f25624b416617d9e6dc93412b2006dc AS runtime
 
 # renovate: datasource=node-version depName=node
-ARG NODE_VERSION="26.5.1"
+ARG NODE_VERSION="26.7.0"
 
 # Stage 1: Install dependencies only when needed
 FROM base AS deps
