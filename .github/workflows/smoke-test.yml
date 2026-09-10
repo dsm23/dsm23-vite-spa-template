@@ -17,9 +17,6 @@ permissions: {}
 jobs:
   smoke-test:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.62.1@sha256:dcc5531e97840b9b5e794f2814476b21571c5124a3fca2267d73041f56e7580e
-      options: --user 1001
     steps:
       - name: Git Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -30,6 +27,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Smoke & Acceptance tests
+        shell: devenv shell bash -- -e {0}
         run: pnpm test --project storybook
         env:
           FORCE_COLOR: "1"

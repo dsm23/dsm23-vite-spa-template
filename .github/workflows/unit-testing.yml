@@ -37,6 +37,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Unit & Integration tests
+        shell: devenv shell bash -- -e {0}
         run: >
           pnpm exec vitest run
           --project unit
@@ -90,6 +91,7 @@ jobs:
           merge-multiple: true
 
       - name: Merge reports
+        shell: devenv shell bash -- -e {0}
         run: >
           pnpm exec vitest
           --coverage.enabled

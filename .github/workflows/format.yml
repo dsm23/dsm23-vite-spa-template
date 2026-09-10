@@ -37,7 +37,9 @@ jobs:
           just-version: 1.50.0
 
       - name: Format check
+        shell: devenv shell bash -- -e {0}
         run: pnpm fmt.check
 
       - name: Format justfile check
+        shell: devenv shell bash -- -e {0}
         run: just --fmt --check
