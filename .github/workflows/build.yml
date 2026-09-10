@@ -32,7 +32,9 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Build check
+        shell: devenv shell bash -- -e {0}
         run: pnpm run build
 
       - name: Storybook build check
+        shell: devenv shell bash -- -e {0}
         run: pnpm run build-storybook

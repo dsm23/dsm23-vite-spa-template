@@ -32,9 +32,11 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Lint
+        shell: devenv shell bash -- -e {0}
         run: pnpm lint
 
       - name: Lint Unused Dependencies
+        shell: devenv shell bash -- -e {0}
         run: pnpm exec knip
 
       - name: Hadolint check

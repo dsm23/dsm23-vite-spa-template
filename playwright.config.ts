@@ -47,9 +47,14 @@ export default defineConfig({
       name: "firefox",
       use: { ...devices["Desktop Firefox"] },
     },
+    // TODO: replace edge with webkit when nixpkg is updated
+    // {
+    //   name: "webkit",
+    //   use: { ...devices["Desktop Safari"] },
+    // },
     {
-      name: "webkit",
-      use: { ...devices["Desktop Safari"] },
+      name: "edge",
+      use: { ...devices["Desktop Edge"] },
     },
   ],
   tag: "@dev",
