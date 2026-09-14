@@ -32,4 +32,5 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Types check
+        shell: devenv shell bash -- -e {0}
         run: pnpm run check-types

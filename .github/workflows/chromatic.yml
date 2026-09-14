@@ -46,9 +46,10 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run Chromatic
-        uses: chromaui/action@98132da0fca2211fb41b3af7b49ce85176007851 # v17.8.0
-        with:
-          onlyChanged: true
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          skip: renovate/!(major-tailwindcss-monorepo)**
-          zip: true
+        shell: devenv shell bash -- -e {0}
+        run: >
+          pnpm exec chromatic
+          --only-changed true
+          --project-token ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          --skip "renovate/!(major-tailwindcss-monorepo)**"
+          --zip true

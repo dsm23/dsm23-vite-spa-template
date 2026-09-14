@@ -1,50 +1,33 @@
 name: Setup node and pnpm
-description: |
-  Configures Node, pnpm, cache, performs pnpm install
+description: >
+  Configures devbox, node, pnpm, cache, performs pnpm install
 
 inputs:
   pnpm-run-install:
     description: Whether to run pnpm install
     required: false
     default: "true"
-  pnpm-restore-cache:
-    description: Whether to restore cache
-    required: false
-    default: "true"
-  pnpm-install-cache-key:
-    description: The cache key for the pnpm install cache
-    required: false
-    default: ${{ runner.os }}-vite-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
 
 runs:
   using: composite
   steps:
-    - name: Install pnpm
-      uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
-      with:
-        run_install: false
+    - name: Install nix
+      uses: cachix/install-nix-action@13d8dd58da0234aa297dedd986986ccb8e7f3e24 # v31.11.1
 
-    - name: Restore pnpm install cache
-      if: ${{ inputs.pnpm-restore-cache == 'true' }}
-      uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+    - name: cachix cache
+      uses: cachix/cachix-action@38b082610b782e7e93e209c35fd730d399dee866 # v17
       with:
-        # See here for caching with `yarn` https://github.com/actions/cache/blob/main/examples.md#node---yarn or you can leverage caching with actions/setup-node https://github.com/actions/setup-node
-        path: |
-          ~/.pnpm-store
-          ${{ github.workspace }}/node_modules/.vite
-        # Generate a new cache whenever packages or source files change.
-        key: ${{ inputs.pnpm-install-cache-key }}
-        # If source files changed but packages didn't, rebuild from a prior cache.
-        restore-keys: |
-          ${{ runner.os }}-vite-${{ hashFiles('**/pnpm-lock.yaml') }}-
+        name: devenv
 
-    - name: Setup Node.js
-      uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
-      with:
-        node-version-file: ".nvmrc"
-        cache: "pnpm"
+    - name: Install devenv.sh
+      shell: bash
+      run: nix profile add nixpkgs#devenv
+
+    - name: Build the devenv shell and run any pre-commit hooks
+      shell: bash
+      run: devenv test
 
     - name: Run pnpm install
       if: ${{ inputs.pnpm-run-install == 'true' }}
-      shell: bash
+      shell: devenv shell bash -- -e {0}
       run: pnpm install --frozen-lockfile
