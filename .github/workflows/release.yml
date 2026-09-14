@@ -29,9 +29,11 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        shell: devenv shell bash -- -e {0}
         run: npm audit signatures
 
       - name: Release
+        shell: devenv shell bash -- -e {0}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm dlx semantic-release

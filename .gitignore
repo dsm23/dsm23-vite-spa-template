@@ -33,6 +33,14 @@ lefthook-local.yml
 .vitest-reports/
 coverage/
 
+# devenv
+.devenv/
+devenv.local.nix
+devenv.local.yaml
+
+# direnv
+.direnv/
+
 # playwright
 /test-results/
 /playwright-report/
